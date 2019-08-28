@@ -1,10 +1,9 @@
 import React from 'react'
-import './App.css'
 
-import Button from './components/Button'
+import BackgroundWave from './components/BackgroundWave'
 
 function App() {
-    return <Button />
+    return <BackgroundWave />
 }
 
 export default App
