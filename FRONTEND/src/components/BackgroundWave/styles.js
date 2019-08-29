@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 
 export const BackgroundStyled = styled.body`
-    width: 100%;
-    height: 1000px;
-    background: #e6e6e6;
+    height: 100vh;
+    padding: 0px;
+    margin: 0px;
+    background: #0506;
 `
 
 
