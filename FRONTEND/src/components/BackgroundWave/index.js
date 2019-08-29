@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 
-import { BackgroundWave } from './styles'
+import { BackgroundStyled } from './styles'
 
 class BackgroundWave extends Component {
     render() {
-        return <BackgroundWave />
+        return (
+            <BackgroundStyled/>
+        )
     }
 }
 
