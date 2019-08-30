@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 
 export const BackgroundStyled = styled.body`
-    height: 100vh;
+    height: 100%;
     padding: 0px;
     margin: 0px;
-    background: #0506;
+    box-sizing: border-box;
+    background: #e3e3;
 `
 
 
