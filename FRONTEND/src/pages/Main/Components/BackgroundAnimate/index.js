@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
-import { Area, Circles } from './styles'
+import { Area, Circles, ContainerStyled } from './styles'
+import User from '../../../../assets/img/Usuario.svg'
+import Projetista from '../../../../assets/img/Projetista.svg'
 
 class BackgroundAnimate extends Component {
     render() {
@@ -18,6 +20,13 @@ class BackgroundAnimate extends Component {
                     <li></li>
                     <li></li>
                 </Circles>
+                <ContainerStyled>
+                    <p>Escolha o seu perfil</p>
+                    <div>
+                        <img src={User} />
+                        <img src={Projetista} />
+                    </div>
+                </ContainerStyled>
             </Area>
         )
     }

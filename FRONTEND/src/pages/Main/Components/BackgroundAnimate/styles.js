@@ -1,12 +1,18 @@
 import styled from 'styled-components'
 
+//Div geral
 export const Area = styled.div`
     background: #81259d;
     background: -webkit-linear-gradient(to left, #81259d, #e3e3e3);
     width: 100%;
     height: 100vh;
-`
 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+`
+//Circulos que ficam no ar
 export const Circles = styled.ul`
     position: absolute;
     top: 0;
@@ -113,5 +119,41 @@ export const Circles = styled.ul`
             opacity: 0;
             border-radius: 50%;
         }
+    }
+`
+
+//Div branca
+export const ContainerStyled = styled.div`
+    width: 448px;
+    height: 549px;
+    left: 736px;
+    top: 265px;
+    background-color: #fefefe;
+    border-radius: 10px;
+
+    z-index: 10;
+
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    p {
+        color: #a0a0a0;
+        font-size: 18px;
+        text-align: center;
+        margin-top: 146px;
+        font-weight: lighter;
+    }
+
+    div {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+    }
+
+    img {
+        margin-top: 89px;
+        padding: 10px;
+        width: 110px;
+        height: 110px;
     }
 `
