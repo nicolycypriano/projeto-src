@@ -1,9 +1,15 @@
 import React from 'react'
 
-import BackgroundWave from './components/BackgroundWave'
+import Routes from './routes/routes'
+import GlobalStyle from './styles/GlobalStyle'
 
 function App() {
-    return <BackgroundWave />
+    return (
+        <>
+            <Routes />
+            <GlobalStyle />
+        </>
+    )
 }
 
 export default App
