@@ -6,25 +6,11 @@ import BackgroundAnimate from './Components/BackgroundAnimate'
 
 function Main() {
     return (
-        <>
-            {/* //{' '}
+        <BackgroundAnimate>
             <ContainerStyled>
-                // <FaGithubAlt />
-                // //{' '}
-                <FormStyled onSubmit={() => {}}>
-                    // <input type="text" />
-                    //{' '}
-                    <SubmitButtonStyled disabled>
-                        // <FaPlus color="#FFF" size={14} />
-                        //{' '}
-                    </SubmitButtonStyled>
-                    //{' '}
-                </FormStyled>
-                //{' '}
+                <h1>Hello World</h1>
             </ContainerStyled>
-            <h1>Repositórios</h1> */}
-            <BackgroundAnimate />
-        </>
+        </BackgroundAnimate>
     )
 }
 
