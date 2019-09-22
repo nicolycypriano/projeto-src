@@ -3,7 +3,7 @@ import { Switch, BrowserRouter, Route } from 'react-router-dom'
 
 //Importar páginas
 import Main from '../pages/Main/index'
-import Repository from '../pages/Repository/index'
+import UserHome from '../pages/UserHome/index'
 
 // const Router = () => {
 //     <BrowserRouter>
@@ -16,7 +16,7 @@ export default function Routes() {
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={Main} />
-                <Route path="/repo" component={Repository} />
+                <Route path="/usuario" component={UserHome} />
             </Switch>
         </BrowserRouter>
     )

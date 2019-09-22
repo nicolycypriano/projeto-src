@@ -149,11 +149,12 @@ export const ContainerStyled = styled.div`
         display: flex;
         flex-direction: row;
     }
+`
 
-    img {
-        margin-top: 89px;
-        padding: 10px;
-        width: 110px;
-        height: 110px;
-    }
+export const ImgStyled = styled.img`
+    margin-top: 89px;
+    padding: 10px;
+    width: 110px;
+    height: 110px;
+    cursor: pointer;
 `
