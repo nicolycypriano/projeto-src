@@ -47,6 +47,7 @@ export const ConstainerIconsStyled = styled.div`
     width: 1347px;
     height: 275px;
 `
+
 export const IconStyled = styled.img`
     position: relative;
     width: 156px;

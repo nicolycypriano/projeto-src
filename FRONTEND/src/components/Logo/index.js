@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
-import Logo from '../../assets/img/logo.svg'
+import Logo from '../../assets/img/logoVector.svg'
+import { Link } from 'react-router-dom'
 import { LogoStyled } from './styles'
 
 class LogoIni extends Component {
     render() {
-        return <LogoStyled src={Logo} />
+        return (
+            <Link to="/">
+                <LogoStyled src={Logo} />
+            </Link>
+        )
     }
 }
 

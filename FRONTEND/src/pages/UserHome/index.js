@@ -9,11 +9,12 @@ import Contato from '../../assets/img/userContato.svg'
 
 //importando componentes
 import LogoIni from '../../components/Logo'
+import Icon from '../../components/Icon'
 import {
     TitleH1Styled,
     TitleH2Styled,
-    IconStyled,
-    ConstainerIconsStyled
+    ConstainerIconsStyled,
+    IconStyled
 } from './styles'
 
 class UserHome extends Component {
@@ -24,16 +25,16 @@ class UserHome extends Component {
                 <TitleH1Styled>Sistema de Controle Residencial</TitleH1Styled>
                 <TitleH2Styled>Olá, usuário!</TitleH2Styled>
                 <ConstainerIconsStyled>
-                    <Link>
+                    <Link to="/usuario/perfil">
                         <IconStyled src={Perfil} />
                     </Link>
-                    <Link>
+                    <Link to="/usuario/imoveis">
                         <IconStyled src={Imoveis} />
                     </Link>
-                    <Link>
+                    <Link to="/usuario/alarme">
                         <IconStyled src={Alarme} />
                     </Link>
-                    <Link>
+                    <Link to="/usuario/contato">
                         <IconStyled src={Contato} />
                     </Link>
                 </ConstainerIconsStyled>

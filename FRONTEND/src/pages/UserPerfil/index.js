@@ -2,44 +2,41 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 //importando imagens
-import Perfil from '../../assets/img/userPerfil.svg'
-import Imoveis from '../../assets/img/userImoveis.svg'
-import Alarme from '../../assets/img/userAlarme.svg'
-import Contato from '../../assets/img/userContato.svg'
+import Logo from '../../assets/img/userPerfilLogo.svg'
+import AddResp from '../../assets/img/userPerfilAddResp.svg'
+import RemResp from '../../assets/img/userPerfilRemResp.svg'
 
 //importando componentes
 import LogoIni from '../../components/Logo'
 import {
+    LogoStyled,
     TitleH1Styled,
     TitleH2Styled,
-    IconStyled,
-    ConstainerIconsStyled
+    TitleH4Styled,
+    ImgStyled,
+    ContainerStyled
 } from './styles'
 
-class UserHome extends Component {
+class UserPerfil extends Component {
     render() {
         return (
             <>
                 <LogoIni />
-                <TitleH1Styled>Sistema de Controle Residencial</TitleH1Styled>
-                <TitleH2Styled>Olá, usuário!</TitleH2Styled>
-                <ConstainerIconsStyled>
+                <LogoStyled src={Logo} />
+                <TitleH1Styled>Wycthor Augusto Baldoíno</TitleH1Styled>
+                <TitleH2Styled>wycthor.augusto@gmail.com</TitleH2Styled>
+                <TitleH4Styled>(48) 99633-1718</TitleH4Styled>
+                <ContainerStyled>
                     <Link>
-                        <IconStyled src={Perfil} />
+                        <ImgStyled src={AddResp} />
                     </Link>
                     <Link>
-                        <IconStyled src={Imoveis} />
+                        <ImgStyled src={RemResp} />
                     </Link>
-                    <Link>
-                        <IconStyled src={Alarme} />
-                    </Link>
-                    <Link>
-                        <IconStyled src={Contato} />
-                    </Link>
-                </ConstainerIconsStyled>
+                </ContainerStyled>
             </>
         )
     }
 }
 
-export default UserHome
+export default UserPerfil
