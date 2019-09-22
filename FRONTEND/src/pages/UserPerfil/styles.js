@@ -54,9 +54,4 @@ export const IconStyled = styled.img`
     left: 507px;
     top: 587px;
     margin-right: 94px;
-    transition: transform 0.2s;
-
-    :hover {
-        transform: scale(1.5);
-    }
 `
