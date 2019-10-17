@@ -9,24 +9,21 @@ import UserPerfil from '../pages/UserPerfil/index'
 import UserImovel from '../pages/UserImovel'
 import UserImovelSala from '../pages/UserImovelSala'
 
-// const Router = () => {
-//     <BrowserRouter>
-//         <AdminProtectedRoute exact path="/home" component={AdminHome} />
-//     </BrowserRouter>
-// }
+//  const Router = () => {
+//      <BrowserRouter>
+//      </BrowserRouter>
+//  }
 
 export default function Routes() {
     return (
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={Main} />
-                <Route path="/projetista" exact component={projetistaHome} />>
+                <Route path="/projetistaHome" exact component={projetistaHome} />
                 <Route path="/usuario" exact component={UserHome} />
                 <Route path="/usuario/perfil" exact component={UserPerfil} />
                 <Route path="/usuario/imoveis" exact component={UserImovel} />
-                <Route
-                    path="/usuario/imoveis/sala"
-                    component={UserImovelSala}
+                <Route path="/usuario/imoveis/sala"component={UserImovelSala}
                 />
             </Switch>
         </BrowserRouter>
