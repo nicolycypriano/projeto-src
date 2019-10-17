@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Area, Circles, ContainerStyled, ImgStyled } from './styles'
-import User from '../../../../assets/img/Usuario.svg'
+import User from '../../../../assets/img/usuario.svg'
+import Projetista from '../../../../assets/img/projetista.svg'
 // import Projetista from '../../../../assets/img/Projetista.svg'
 
 class BackgroundAnimate extends Component {
@@ -26,6 +27,9 @@ class BackgroundAnimate extends Component {
                     <div>
                         <Link to="/usuario">
                             <ImgStyled src={User}></ImgStyled>
+                        </Link>
+                        <Link to="/projetista">
+                            <ImgStyled src={Projetista}></ImgStyled>
                         </Link>
                         {/* <Link to="/projetista">
                             <ImgStyled src={User}></ImgStyled>
