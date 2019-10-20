@@ -1,5 +1,4 @@
-// Alterações Wycthor
-
+//Terminar Projetista Modulo
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -22,19 +21,19 @@ class ProjestistaHome extends Component {
     render() {
         return (
             <>
-            <LogoIni />>
+            <LogoIni />
             <TitleH1Styled>Sistema de Controle Residencial</TitleH1Styled>
             <TitleH2Styled>Olá, projetista!</TitleH2Styled>
             <ConstainerIconsStyled>
-                <link to="">
+                <Link to="/projetistaUsuarios">
                     <IconStyled src={Usuarios} />
-                </link>
-                <link to="">
+                </Link>
+                <Link to="/projetistaProjetos">
                     <IconStyled src={Projetos} />
-                </link>
-                <link to="">
+                </Link>
+                <Link to="/projetoModulos">
                     <IconStyled src={Modulos} />
-                </link>
+                </Link>
             </ConstainerIconsStyled>
             </>
         )

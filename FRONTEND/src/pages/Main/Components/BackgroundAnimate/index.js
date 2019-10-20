@@ -28,7 +28,7 @@ class BackgroundAnimate extends Component {
                         <Link to="/usuario">
                             <ImgStyled src={User}></ImgStyled>
                         </Link>
-                        <Link to="/projetista">
+                        <Link to="/projetistaHome">
                             <ImgStyled src={Projetista}></ImgStyled>
                         </Link>
                         {/* <Link to="/projetista">

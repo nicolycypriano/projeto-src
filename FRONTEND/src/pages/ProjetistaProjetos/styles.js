@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 
+//left Modificada para telas resolução 1920x1080
 export const TitleH1Styled = styled.h1`
     position: absolute;
     width: 780px;
     height: 55px;
-    left: 570px;
+    left: 825px;
     top: 232px;
 
     font-family: Roboto;
@@ -48,11 +49,12 @@ export const ConstainerIconsStyled = styled.div`
     height: 275px;
 `
 
+//left Modificada para telas resolução 1920x1080
 export const IconStyled = styled.img`
     position: relative;
     width: 156px;
     height: 185px;
-    left: 480px;
+    left: 640px;
     top: 587px;
     margin-right: 94px;
     transition: transform 0.2s;
