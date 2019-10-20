@@ -1,20 +1,6 @@
-import express from 'express'
-import routes from './routes'
+// CRIAÇÃO DO SERVIDOR
 
-class App {
-  constructor() {
-    this.server = express()
-    this.route()
-    this.middlewares()
-  }
+import app from './app';
 
-  middlewares() {
-    this.server.use(express.json())
-  }
-
-  route() {
-    this.server.use(routes)
-  }
-}
-
-export default new App().server.listen(5555)
+// setando a porta que irá executar a aplicação
+app.listen(process.env.PORT || 3333);

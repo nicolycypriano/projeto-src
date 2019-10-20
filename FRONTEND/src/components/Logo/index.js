@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Logo from '../../assets/img/logoVector.svg'
+import Logo from '../../assets/alarme.svg'
 import { Link } from 'react-router-dom'
 import { LogoStyled } from './styles'
 

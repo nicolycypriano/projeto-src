@@ -1,8 +1,11 @@
-const path = require('path')
+// padronizar os caminhos tanto no windows, linux e mac
+const {
+  resolve
+} = require('path')
 
 module.exports = {
-  'config': path.resolve('./src/config', 'database.js'),
-  'models-path': path.resolve('./src/models', 'sequelize'),
-  'seeders-path': path.resolve('database', 'seeders'),
-  'migrations-path': path.resolve('./src', 'migrations'),
+  config: resolve(__dirname, 'src', 'config', 'database.js'),
+  'models-path': resolve(__dirname, 'src', 'app', 'models'),
+  'migrations-path': resolve(__dirname, 'src', 'database', 'migrations'),
+  'seeders-path': resolve(__dirname, 'src', 'database', 'seeds')
 }

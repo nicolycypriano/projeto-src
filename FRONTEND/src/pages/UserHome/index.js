@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 //importando imagens
-import Perfil from '../../assets/img/userPerfil.svg'
-import Imoveis from '../../assets/img/userImoveis.svg'
-import Alarme from '../../assets/img/userAlarme.svg'
-import Contato from '../../assets/img/userContato.svg'
+import Perfil from '../../assets/userPerfil.svg'
+import Imoveis from '../../assets/userImoveis.svg'
+import Alarme from '../../assets/userAlarme.svg'
+import Contato from '../../assets/userContato.svg'
 
 //importando componentes
 import LogoIni from '../../components/Logo'
@@ -21,13 +21,9 @@ class UserHome extends Component {
     render() {
         return (
             <>
-                <LogoIni />
                 <TitleH1Styled>Sistema de Controle Residencial</TitleH1Styled>
                 <TitleH2Styled>Olá, usuário!</TitleH2Styled>
                 <ConstainerIconsStyled>
-                    <Link to="/usuario/perfil">
-                        <IconStyled src={Perfil} />
-                    </Link>
                     <Link to="/usuario/imoveis">
                         <IconStyled src={Imoveis} />
                     </Link>
