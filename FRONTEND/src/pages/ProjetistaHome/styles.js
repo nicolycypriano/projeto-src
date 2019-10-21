@@ -1,3 +1,4 @@
+//Terminar
 import styled from 'styled-components'
 
 export const TitleH1Styled = styled.h1`
@@ -43,16 +44,19 @@ export const TitleH2Styled = styled.h2`
     color: #ffffff;
 `
 export const ConstainerIconsStyled = styled.div`
+justifyContent: 'center';
+alignItems: 'center';
     display: flex;
-    width: 1347px;
+    width: 1300px;
     height: 275px;
 `
 
+//Height Modificada para telas resolução 1920x1080
 export const IconStyled = styled.img`
     position: relative;
     width: 156px;
     height: 185px;
-    left: 480px;
+    left: 640px;
     top: 587px;
     margin-right: 94px;
     transition: transform 0.2s;
