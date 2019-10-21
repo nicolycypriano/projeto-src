@@ -61,3 +61,19 @@ export const IconStyled = styled.img`
         transform: scale(1.5);
     }
 `
+export const DivStyled = styled.div`
+    align-items: center;
+    text-align: center;
+    position: relative;
+    display: flex;
+    left: 480px;
+    top: 587px;
+
+`
+export const labelStyled = styled.label`
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    color: #ffffff;
+
+`

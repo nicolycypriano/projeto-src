@@ -11,19 +11,29 @@ import {
     TitleH1Styled,
     TitleH2Styled,
     ConstainerIconsStyled,
-    IconStyled
+    IconStyled,
+    DivStyled
 } from './styles'
 
 class ProjestistaUsuariosCadastro extends Component {
     
+    //Arrumar para entrega 4
     render() {
         return (
             <>
             <LogoIni />
             <TitleH1Styled>Cadastro de Usuários</TitleH1Styled>
             <TitleH2Styled></TitleH2Styled>
-
+            
+            
+            <form>
+                <DivStyled>
+                    <labelStyled>Username</labelStyled>
+                    <input type='text' />
+                </DivStyled>
+            </form>
             </>
+
         )
     }
 
