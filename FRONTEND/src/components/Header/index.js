@@ -2,9 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import Notifications from '~/components/Notifications';
+import Notifications from '../../components/Notifications';
 
-import logo from '~/assets/alarme.svg';
+import logo from '../../assets/alarme.svg';
 
 import { Container, Content, Profile } from './styles';
 
@@ -15,7 +15,7 @@ export default function Header() {
     <Container>
       <Content>
         <nav>
-          <img src={logo} alt="GoBarber" />
+          <img src={logo} alt="SRC" />
           <Link to="/dashboard">DASHBOARD</Link>
         </nav>
 
