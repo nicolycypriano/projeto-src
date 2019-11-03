@@ -6,7 +6,17 @@ export const H1Styled = styled.h1`
   margin-top: 10%;
 `;
 
-export const InputStyled = styled.input`
-  width: 100%;
+export const Input = styled.input`
+  width: 50%;
+  height: 30px;
+  display: flex;
+  margin-left: 25%;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: none;
+  :nth-child(1) {
+    margin-top: 30%;
+  }
 `;
 
+export const Button = styled.button``;
