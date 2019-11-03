@@ -3,18 +3,21 @@ import { Redirect } from 'react-router-dom';
 import { H1Styled, Select, Button } from './styles';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
+import { Container } from '../Profile/AvatarInput/styles';
 
 class Comodo extends Component {
 
   state = {
     residencia: null,
     componentes: [],
-    comodo: null,
+    tipoComodo: null,
     redirect: false,
+    comodo: null
   }
 
   componentDidMount() {
     this.setState({ residencia: this.props.location.state.residencia });
+
     api.get('/componentes')
       .then(response => {
         this.setState({ componentes: response.data.tipoComodo });
@@ -25,18 +28,16 @@ class Comodo extends Component {
   }
 
   handleChange = e => {
-    this.setState({ comodo: e.target.value });
+    this.setState({ tipoComodo: e.target.value });
   }
 
   cadastraComodo = () => {
-    console.log(this.state)
-
     api.post('/comodo/create', {
       'residencia': this.state.residencia,
-      'tipoComodo': this.state.comodo
+      'tipoComodo': this.state.tipoComodo
     })
       .then(response => {
-        this.setState({ componentes: response.data.tipoComodo, redirect: true, comodo: response.data.comodo });
+        this.setState({ redirect: true, comodo: response.data.comodo });
       })
       .catch(function (error) {
         console.log(error);
@@ -47,6 +48,7 @@ class Comodo extends Component {
     const { redirect } = this.state;
 
     if (redirect) {
+      console.log('é deus mamae', this.state);
       return <Redirect to={{ pathname: "/atuador", state: { comodo: this.state.comodo } }} />;
     }
 
@@ -60,7 +62,16 @@ class Comodo extends Component {
         <Link to="/atuador">
           <Button onClick={this.cadastraComodo}>Inserir comodo</Button>
         </Link>
+
+
+        <Container>
+          <H1Styled>Adicionar atuador</H1Styled>
+          <Select />
+
+          <Button>OK</Button>
+        </Container>
       </>
+
     );
   }
 
