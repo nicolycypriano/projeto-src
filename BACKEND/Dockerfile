@@ -1,6 +1,7 @@
-FROM node:alpine
+FROM php:fpm-alpine
 
-WORKDIR /usr/app
+RUN set -ex \
+  && apk --no-cache add \
+    postgresql-dev
 
-COPY . ./
-RUN yarn
+RUN docker-php-ext-install pdo pdo_pgsql

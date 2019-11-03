@@ -1,11 +1,12 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 
-import history from '../../../services/history';
-import api from '../../../services/api';
+import history from '~/services/history';
+import api from '~/services/api';
 
 import { signInSuccess, signFailure } from './actions';
 
+/////////////////////////////////
 export function* signIn({ payload }) {
   try {
     const { email, password } = payload;
@@ -33,6 +34,7 @@ export function* signIn({ payload }) {
   }
 }
 
+///////////////////////////////////////////////
 export function* signUp({ payload }) {
   try {
     const { name, email, password } = payload;
@@ -52,6 +54,7 @@ export function* signUp({ payload }) {
   }
 }
 
+/////////////////////////////////
 export function setToken({ payload }) {
   if (!payload) return;
 
@@ -62,10 +65,12 @@ export function setToken({ payload }) {
   }
 }
 
+////////////////////////////
 export function signOut() {
   history.push('/');
 }
 
+/////////////////////////////
 export default all([
   takeLatest('persist/REHYDRATE', setToken),
   takeLatest('@auth/SIGN_IN_REQUEST', signIn),
