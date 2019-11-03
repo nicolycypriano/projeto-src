@@ -11,6 +11,8 @@ import Atuador from '../pages/Atuador';
 import Sensor from '../pages/Sensor';
 import Casa from '../pages/Casa';
 import Profile from '../pages/Profile';
+import ListagemResidencia from '../pages/ListagemResidencia';
+
 
 export default function Routes() {
   return (
@@ -22,6 +24,7 @@ export default function Routes() {
       <Route path="/atuador" component={Atuador} />
       <Route path="/sensor" component={Sensor} />
       <Route path="/casa" component={Casa} />
+      <Route path="/residencia/list" component={ListagemResidencia} />
     </Switch>
   );
 }
