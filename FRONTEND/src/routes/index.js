@@ -7,6 +7,8 @@ import SignUp from '../pages/SignUp';
 
 import Residencia from '../pages/Residencia';
 import Comodo from '../pages/Comodo';
+import Projeto from '../pages/Projeto';
+import Casa from '../pages/Casa';
 import Profile from '../pages/Profile';
 
 export default function Routes() {
@@ -16,6 +18,8 @@ export default function Routes() {
       <Route path="/profile" component={Profile} />
       <Route path="/residencia" component={Residencia} />
       <Route path="/comodo" component={Comodo} />
+      <Route path="/projeto" component={Projeto} />
+      <Route path="/casa" component={Casa} />
     </Switch>
   );
 }
