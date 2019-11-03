@@ -2,8 +2,32 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { H1Styled, Input, Button } from './styles';
 import api from '../../services/api';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class Main extends Component {
+  // Residencia
+  notifyResidenciaSuccess = () => toast.success('Residência cadastrado com sucesso', {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+  });
+
+  notifyResidenciaError = () => toast.error('Não foi possível cadastrar essa residência', {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+  });
+
+
+
+
   state = {
     residencia: null,
     nome: '',
@@ -21,9 +45,11 @@ class Main extends Component {
       })
       .then(response => {
         this.setState({ redirect: true, residencia: response.data.residencia });
+        this.notifyResidenciaSuccess();
       })
-      .catch(function (error) {
+      .catch(error => {
         console.log(error);
+        this.notifyResidenciaError();
       });
   };
 
@@ -68,6 +94,17 @@ class Main extends Component {
         />
 
         <Button onClick={this.cadastraResidencia}>Inserir</Button>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnVisibilityChange
+          draggable
+          pauseOnHover
+        />
       </>
     );
   }
