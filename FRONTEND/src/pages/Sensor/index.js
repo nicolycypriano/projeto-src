@@ -8,7 +8,7 @@ import {
 } from './styles';
 import { Link } from 'react-router-dom';
 
-function Comodo() {
+function Sensor() {
   return (
     <>
       <Container>
@@ -23,4 +23,4 @@ function Comodo() {
   );
 }
 
-export default Comodo;
+export default Sensor;
