@@ -1,9 +1,14 @@
 import React from 'react';
-import { H1Styled } from './styles';
-import { Form, Input } from '@rocketseat/unform';
+import { H1Styled, Input } from './styles';
 
 function Main() {
-  return 'Hello';
+  return (
+    <>
+      <Input name="name" />
+      <Input name="logradouro" />
+      <Input name="numero" />
+    </>
+  );
 }
 
 export default Main;
