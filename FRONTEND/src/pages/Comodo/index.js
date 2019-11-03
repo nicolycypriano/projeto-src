@@ -169,9 +169,6 @@ class Comodo extends Component {
     }
   }
 
-  redirectHome = () => {
-
-  }
 
   render() {
     return (
@@ -256,7 +253,10 @@ class Comodo extends Component {
             />
           </Container>
         </ContainerContainer>
-        <Button onClick={this.redirectHome}>Finalizar cadastros</Button>
+
+        <Link to="/residencia/list">
+          <Button>Finalizar cadastros</Button>
+        </Link>
       </>
 
     );
