@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { H1Styled, Select, Button } from './styles';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
@@ -8,7 +9,8 @@ class Comodo extends Component {
   state = {
     residencia: null,
     componentes: [],
-    comodo: null
+    comodo: null,
+    redirect: false,
   }
 
   componentDidMount() {
@@ -34,7 +36,7 @@ class Comodo extends Component {
       'tipoComodo': this.state.comodo
     })
       .then(response => {
-        //this.setState({ componentes: response.data.tipoComodo});
+        this.setState({ componentes: response.data.tipoComodo, redirect: true, comodo: response.data.comodo });
       })
       .catch(function (error) {
         console.log(error);
@@ -42,6 +44,12 @@ class Comodo extends Component {
   }
 
   render() {
+    const { redirect } = this.state;
+
+    if (redirect) {
+      return <Redirect to={{ pathname: "/atuador", state: { comodo: this.state.comodo } }} />;
+    }
+
     return (
       <>
         <H1Styled>Adicionar novo cômodo</H1Styled>
