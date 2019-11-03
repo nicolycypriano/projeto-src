@@ -49,7 +49,7 @@ class Comodo extends Component {
           {this.state.componentes.map((opcao) => <option key={opcao.id} value={opcao.id}>{opcao.nome}</option>) || <option>Selecione um cômodo</option>}
         </Select>
 
-        <Link to="/projeto">
+        <Link to="/atuador">
           <Button onClick={this.cadastraComodo}>Inserir comodo</Button>
         </Link>
       </>
