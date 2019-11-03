@@ -86,36 +86,38 @@ class Comodo extends Component {
   render() {
     return (
       <>
-        <Container>
-          <H1Styled>Adicionar novo cômodo</H1Styled>
-          <Select name="tipo" placeholder="Nome do cômodo" onChange={this.handleChange}>
-            {this.state.componentes.map((opcao) => <option key={opcao.id} value={opcao.id}>{opcao.nome}</option>) || <option>Selecione um cômodo</option>}
-          </Select>
-          <Button onClick={this.cadastraComodo}>Cadastrar Cômodo</Button>
-        </Container>
+        <ContainerContainer>
+          <Container>
+            <H1Styled>Adicionar novo cômodo</H1Styled>
+            <Select name="tipo" placeholder="Nome do cômodo" onChange={this.handleChange}>
+              {this.state.componentes.map((opcao) => <option key={opcao.id} value={opcao.id}>{opcao.nome}</option>) || <option>Selecione um cômodo</option>}
+            </Select>
+            <Button onClick={this.cadastraComodo}>Cadastrar Cômodo</Button>
+          </Container>
 
 
-        <Container>
-          <H1Styled>Adicionar novo atuador</H1Styled>
-          <Select name="tipo" placeholder="Nome do cômodo" onChange={this.handleChangeAtuador}>
-            {this.state.tipoAtuador.map((opcao) => <option key={opcao.id} value={opcao.id}>{opcao.categoria}</option>) || <option>Selecione um atuador</option>}
-          </Select>
-          <Input placeholder="Nome do atuador"></Input>
+          <Container>
+            <H1Styled>Adicionar novo atuador</H1Styled>
+            <Select name="tipo" placeholder="Nome do cômodo" onChange={this.handleChangeAtuador}>
+              {this.state.tipoAtuador.map((opcao) => <option key={opcao.id} value={opcao.id}>{opcao.categoria}</option>) || <option>Selecione um atuador</option>}
+            </Select>
+            <Input placeholder="Nome do atuador"></Input>
 
 
-          <Button onClick={this.cadastraAtuador}>Cadastrar Atuador</Button>
-        </Container>
+            <Button onClick={this.cadastraAtuador}>Cadastrar Atuador</Button>
+          </Container>
 
-        <Container>
-          <H1Styled>Adicionar novo sensor</H1Styled>
-          <Select name="tipo" placeholder="Nome do cômodo" onChange={this.handleChangeSensor}>
-            {this.state.tipoSensor.map((opcao) => <option key={opcao.id} value={opcao.id}>{opcao.categoria}</option>) || <option>Selecione um sensor</option>}
-          </Select>
-          <Input placeholder="Nome do sensor"></Input>
+          <Container>
+            <H1Styled>Adicionar novo sensor</H1Styled>
+            <Select name="tipo" placeholder="Nome do cômodo" onChange={this.handleChangeSensor}>
+              {this.state.tipoSensor.map((opcao) => <option key={opcao.id} value={opcao.id}>{opcao.categoria}</option>) || <option>Selecione um sensor</option>}
+            </Select>
+            <Input placeholder="Nome do sensor"></Input>
 
 
-          <Button onClick={this.cadastraSensor}>Cadastrar Sensor</Button>
-        </Container>
+            <Button onClick={this.cadastraSensor}>Cadastrar Sensor</Button>
+          </Container>
+        </ContainerContainer>
       </>
 
     );
