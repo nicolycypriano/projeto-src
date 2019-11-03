@@ -5,11 +5,9 @@ function Comodo() {
   return (
     <>
       <H1Styled>Adicionar novo cômodo</H1Styled>
-      <Input name="name" placeholder="Nome da casa" />
-      <Input name="logradouro" placeholder="Nome da rua" />
-      <Input name="numero" placeholder="Número da casa" />
+      <Input name="tipo" placeholder="Nome do cômodo" />
 
-      <Button>Inserir</Button>
+      <Button>Inserir comodo</Button>
     </>
   );
 }

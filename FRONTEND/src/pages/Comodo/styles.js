@@ -24,8 +24,8 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  color: #845ba0;
-  background-color: #f0f0f0;
+  color: #f3f3f3;
+  background-color: #704d89;
   border: none;
   height: 30px;
   line-height: 30px;
@@ -33,6 +33,6 @@ export const Button = styled.button`
   text-transform: uppercase;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 30px;
   border-radius: 10px;
 `;
