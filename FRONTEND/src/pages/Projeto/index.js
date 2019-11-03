@@ -23,7 +23,7 @@ function Comodo() {
         </Container>
       </ContainerContainer>
 
-      <Link to="/casa">
+      <Link to="/projeto">
         <Button>OK</Button>
       </Link>
     </>

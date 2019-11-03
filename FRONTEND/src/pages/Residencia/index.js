@@ -20,7 +20,7 @@ class Main extends Component {
         numero: this.state.numero,
       })
       .then(response => {
-        this.setState({ redirect: true, residencia: response.residencia });
+        this.setState({ redirect: true, residencia: response.data.residencia });
       })
       .catch(function(error) {
         console.log(error);
@@ -45,7 +45,14 @@ class Main extends Component {
     const { redirect } = this.state;
 
     if (redirect) {
-      return <Redirect to="/comodo" props={this.state.residencia} />;
+      return (
+        <Redirect
+          to={{
+            pathname: '/comodo',
+            state: { residencia: this.state.residencia },
+          }}
+        />
+      );
     }
 
     return (
