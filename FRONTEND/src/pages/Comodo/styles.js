@@ -52,3 +52,17 @@ export const Select = styled.select`
     font-size: 20px;
   }
 `;
+
+export const Input = styled.input`
+  width: 100%;
+  height: 30px;
+  display: flex;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: none;
+  :nth-child(1) {
+    margin-top: 30%;
+  }
+  padding: 10px;
+  text-align: center;
+`;
