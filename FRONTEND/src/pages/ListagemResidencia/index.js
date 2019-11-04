@@ -31,11 +31,21 @@ class ListagemResidencia extends Component {
         <Container>
           <H1Styled>Residências</H1Styled>
           <ul>
-            {this.state.residencias.map((elemento) => <li>{elemento.nome} - {elemento.logradouro} - {elemento.numero}</li>) || <li>Nenhuma residência cadastrada!</li>}
+            {this.state.residencias.map((elemento) =>
+              <li key={elemento.id}>
+                <Link to={`/comodo/list/${elemento.id}`}>
+                  {`Nome da residência: ${elemento.nome}`} - {`Nome da rua: ${elemento.logradouro}`} - {`Número da rua: ${elemento.numero}`}
+                </Link>
+              </li>
+            )
+              ||
+              <li>Nenhuma residência cadastrada!</li>}
           </ul>
         </Container>
 
-        <Link to="/residencia">Cadastrar nova residência</Link>
+        <Link to="/residencia">
+          <Button>Cadastrar nova residência</Button>
+        </Link>
       </>
     );
   }

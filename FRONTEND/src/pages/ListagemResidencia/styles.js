@@ -8,6 +8,21 @@ export const H1Styled = styled.h1`
   margin-right: 10px;
 `;
 
+export const Button = styled.button`
+  color: #f3f3f3;
+  background-color: #704d89;
+  border: none;
+  height: 50px;
+  line-height: 30px;
+  padding: 0 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 30px;
+  border-radius: 10px;
+`;
+
+
 export const Select = styled.select`
   width: 100%;
   height: 40px;
@@ -30,7 +45,15 @@ export const Select = styled.select`
 export const Container = styled.div`
   width: 100%;
   height: 100%;
-  border: 1px solid red;
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin-bottom: 10px;
+  }
+
+
+
 `;
 
 export const ContainerContainer = styled.div`
