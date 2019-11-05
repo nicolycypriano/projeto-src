@@ -5,9 +5,12 @@ import {
   Button,
   Container,
   ContainerContainer,
+  ContainerLi,
 } from './styles';
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
+
+import Header from '../../components/Header';
 
 class ListagemResidencia extends Component {
 
@@ -32,11 +35,16 @@ class ListagemResidencia extends Component {
           <H1Styled>Residências</H1Styled>
           <ul>
             {this.state.residencias.map((elemento) =>
-              <li key={elemento.id}>
                 <Link to={`/comodo/list/${elemento.id}`}>
-                  {`Nome da residência: ${elemento.nome}`} - {`Nome da rua: ${elemento.logradouro}`} - {`Número da rua: ${elemento.numero}`}
+                  <ContainerLi>
+                    <li key={elemento.id}>
+                      <b>Código da residência:</b> {elemento.id} <br/> 
+                      <b>Nome da residência:</b> {elemento.nome} <br/> 
+                      <b>Nome da rua:</b> {elemento.logradouro} <br/> 
+                      <b>Numero da rua</b> {elemento.numero} <br/>
+                    </li>
+                  </ContainerLi>
                 </Link>
-              </li>
             )
               ||
               <li>Nenhuma residência cadastrada!</li>}
@@ -45,6 +53,11 @@ class ListagemResidencia extends Component {
 
         <Link to="/residencia">
           <Button>Cadastrar nova residência</Button>
+        </Link>
+
+
+        <Link to="/">
+          <Button>Sair</Button>
         </Link>
       </>
     );

@@ -45,8 +45,6 @@ export const Select = styled.select`
 export const Container = styled.div`
   width: 100%;
   height: 100%;
-  margin: 0;
-  padding: 0;
 
   li {
     margin-bottom: 10px;
@@ -58,4 +56,20 @@ export const Container = styled.div`
 
 export const ContainerContainer = styled.div`
   display: flex;
+`;
+
+
+export const ContainerLi = styled.div`
+  border: 3px solid #f0f0f0;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #fff;
+  color: #7D5A9B;
+  width: 120%;
+  margin-left: -50px;
+  margin-bottom: 10px;
+
+  :hover{
+    opacity: 0.8;
+  }
 `;
