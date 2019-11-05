@@ -12,13 +12,14 @@ import Sensor from '../pages/Sensor';
 import Casa from '../pages/Casa';
 import Profile from '../pages/Profile';
 import ListagemResidencia from '../pages/ListagemResidencia';
-import ComodoList from '~/pages/ComodoList';
+import ComodoList from '../pages/ComodoList';
 
 
 export default function Routes() {
   return (
     <Switch>
       <Route path="/" exact component={SignIn} />
+      <Route path="/criarconta" exact component={SignUp} />      
       <Route path="/profile" component={Profile} />
       <Route path="/residencia/list" component={ListagemResidencia} />
       <Route path="/residencia" component={Residencia} />
