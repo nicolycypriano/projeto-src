@@ -3,14 +3,10 @@ import {
   H1Styled,
   Select,
   Button,
-  Container,
-  ContainerContainer,
-  ContainerLi,
+  Content,
 } from './styles';
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
-
-import Header from '../../components/Header';
 
 class ListagemResidencia extends Component {
 
@@ -30,36 +26,30 @@ class ListagemResidencia extends Component {
 
   render() {
     return (
-      <>
-        <Container>
-          <H1Styled>Residências</H1Styled>
-          <ul>
-            {this.state.residencias.map((elemento) =>
-                <Link to={`/comodo/list/${elemento.id}`}>
-                  <ContainerLi>
-                    <li key={elemento.id}>
-                      <b>Código da residência:</b> {elemento.id} <br/> 
-                      <b>Nome da residência:</b> {elemento.nome} <br/> 
-                      <b>Nome da rua:</b> {elemento.logradouro} <br/> 
-                      <b>Numero da rua</b> {elemento.numero} <br/>
-                    </li>
-                  </ContainerLi>
-                </Link>
-            )
-              ||
-              <li>Nenhuma residência cadastrada!</li>}
-          </ul>
-        </Container>
 
-        <Link to="/residencia">
-          <Button>Cadastrar nova residência</Button>
-        </Link>
+      <Content>
+        <H1Styled>Residências</H1Styled>
+        <ul>
+          {this.state.residencias.map((residencia) =>
+            <li key={residencia.id}>
+              <Link to={`/comodo/list/${residencia.id}`}>
+                {`Nome da residência: ${residencia.nome}`} - {`Nome da rua: ${residencia.logradouro}`} - {`Número da rua: ${residencia.numero}`}
+              </Link>
+              <button>Adicionar</button>
+            </li>
+          )
+            ||
+            <li>Nenhuma residência cadastrada!</li>}
+
+          <Link to="/residencia">
+            <Button>Cadastrar nova residência</Button>
+          </Link>
+        </ul>
 
 
-        <Link to="/">
-          <Button>Sair</Button>
-        </Link>
-      </>
+
+      </Content>
+
     );
   }
 }

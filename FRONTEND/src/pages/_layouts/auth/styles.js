@@ -2,11 +2,13 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 export const Wrapper = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(-90deg, #715c91, #ab59c1);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  /* flex-direction: column; */
+  width: 100%;
+  /* align-items: center;
+  justify-content: center; */
 `;
 
 export const Content = styled.div`

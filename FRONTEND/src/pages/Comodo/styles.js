@@ -32,7 +32,6 @@ export const Container = styled.div`
 
 export const ContainerContainer = styled.div`
   display: flex;
-  margin-left: -350px
 `;
 
 export const Select = styled.select`

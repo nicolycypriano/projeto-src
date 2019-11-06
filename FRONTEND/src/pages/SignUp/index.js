@@ -7,8 +7,6 @@ import * as Yup from 'yup';
 import logo from '~/assets/logo.svg';
 
 import { signUpRequest } from '~/store/modules/auth/actions';
-import { Button } from '../Residencia/styles';
-
 
 const schema = Yup.object().shape({
   name: Yup.string().required('O nome é obrigatório.'),
@@ -35,7 +33,7 @@ export default function SignUp() {
         <Input name="email" type="email" placeholder="Insira seu e-mail" />
         <Input name="password" type="password" placeholder="Insira sua senha" />
 
-        <Link to="/residencia/list"><Button type="submit">Acessar</Button></Link>
+        <button type="submit">Criar conta</button>
         <Link to="/">Já tenho login</Link>
       </Form>
     </>
