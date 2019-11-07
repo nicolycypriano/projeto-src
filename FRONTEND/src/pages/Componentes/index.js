@@ -25,6 +25,33 @@ class Componentes extends Component {
       });
   }
 
+  handleChecar = (id) => {
+    api.post(`/sensor/acionar/${id}`)
+    .then(response => {
+        let sensor = this.state.sensores.filter((sensor) => sensor.id == id);
+        sensor.valor =  response.data.valor;
+        console.log(sensor);
+
+        this.setState({ sensores: response.data.sensores, atuadores: response.data.atuadores });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });   
+  }
+
+
+  handleRemove = (id) => {
+    console.log(id)
+    api.post(`/sensor/remove/${id}`)
+    .then(response => {
+        let sensores = this.state.sensores.filter((sensor) => sensor.id != id);
+        this.setState({ sensores: sensores});
+    })
+    .catch(function (error) {
+      console.log(error);
+    });   
+  }
+
   render() {
     return (
       <Content>
@@ -35,15 +62,15 @@ class Componentes extends Component {
               <h2>{sensor.nome}</h2>
               <h2>{sensor.categoria}</h2>
               <h2>{sensor.valor}</h2>
-              <button>Checar</button>
+              {/* <button onClick={this.handleChecar(sensor.id)}>Checar</button> */}
               <button>Editar</button>
-              <button>Remover</button>
+              <button onClick={() => this.handleRemove(sensor.id)}>Remover</button>
             </li>
           )
             ||
             <li>Nenhuma sensor cadastrado!</li>}
 
-          <Link to="/sensor">
+          <Link to={`/comodo/${this.props.match.params.id}/sensor`}>
             <Button>Cadastrar novo sensor</Button>
           </Link>
         </ul>
