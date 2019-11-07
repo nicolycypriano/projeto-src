@@ -13,6 +13,7 @@ import Casa from '../pages/Casa';
 import Profile from '../pages/Profile';
 import ListagemResidencia from '../pages/ListagemResidencia';
 import ComodoList from '~/pages/ComodoList';
+import Componentes from '../pages/Componentes';
 
 export default function Routes() {
   return (
@@ -22,6 +23,7 @@ export default function Routes() {
       <Route path="/residencia/list" component={ListagemResidencia} />
       <Route path="/residencia" component={Residencia} />
       <Route path="/comodo/list/:id" component={ComodoList} />
+      <Route path="/componentes/comodo/:id" component={Componentes} />
       <Route path="/comodo" component={Comodo} />
       <Route path="/atuador" component={Atuador} />
       <Route path="/sensor" component={Sensor} />
