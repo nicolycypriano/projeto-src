@@ -14,7 +14,6 @@ import Profile from '../pages/Profile';
 import ListagemResidencia from '../pages/ListagemResidencia';
 import ComodoList from '~/pages/ComodoList';
 
-
 export default function Routes() {
   return (
     <Switch>
@@ -27,6 +26,7 @@ export default function Routes() {
       <Route path="/atuador" component={Atuador} />
       <Route path="/sensor" component={Sensor} />
       <Route path="/casa" component={Casa} />
+      <Route path="/register" component={SignUp} />
     </Switch>
   );
 }
