@@ -2,11 +2,12 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
+import { Formik } from 'formik';
 
 import { signInRequest } from '~/store/modules/auth/actions';
 
-import logo from '~/assets/logo.svg';
-import { Img } from './styles';
+import logo from '../../assets/logo.svg';
+import { Img, ContainerBloco, ContainerForm } from './styles';
 import { Container } from './styles';
 
 const schema = Yup.object().shape({
@@ -29,17 +30,22 @@ export default function SignIn() {
       <Container>
         <Img src={logo} alt="SRC" />
 
-        <form schema={schema} onSubmit={handleSubmit}>
-          <input name="email" type="email" placeholder="Insira seu e-mail" />
-          <input
-            name="password"
-            type="password"
-            placeholder="Insira sua senha"
-          />
+        <ContainerForm>
+          <form schema={schema} onSubmit={handleSubmit}>
+            <input name="email" type="email" placeholder="Insira seu e-mail" />
+            <br />
+            <input
+              name="password"
+              type="password"
+              placeholder="Insira sua senha"
+            />
 
-          <button type="submit">{loading ? 'Carregando...' : 'Acessar'}</button>
-          <Link to="/register">Criar conta gratuita</Link>
-        </form>
+            <button type="submit">
+              {loading ? 'Carregando...' : 'Acessar'}
+            </button>
+            <Link to="/register">Criar conta gratuita</Link>
+          </form>
+        </ContainerForm>
       </Container>
     </>
   );
