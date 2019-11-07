@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
+
 import api from '../../services/api';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -8,7 +10,10 @@ import {
   ButtonSensorOn,
   ButtonSensorOff,
   Container,
-  ContainerLi
+  ContainerLi,
+  H1Styled,
+  Button,
+  Content,
 } from './styles';
 
 class ComodoList extends Component {
@@ -29,9 +34,7 @@ class ComodoList extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props.match.params.id);
-    api
-      .get(`/componentes/comodo/residencia/${this.props.match.params.id}`)
+    api.get(`/componentes/comodo/residencia/${this.props.match.params.id}`)
       .then(response => {
         this.setState({
           comodos: response.data.comodos,
@@ -61,49 +64,27 @@ class ComodoList extends Component {
 
   render() {
     return (
-      <ul>
-        {this.state.comodos.map(elemento => (
-          <Container>
-            <li key={elemento.id}>
-              <ContainerLi>
-                <b>Código do comodo: </b> {elemento.idComodo}
-              </ContainerLi>
-              <b>
-                Sensor:
-                <ButtonSensorOn onClick={this.ativaSensor}>ON</ButtonSensorOn>
-                <ToastContainer
-                  position="top-right"
-                  autoClose={5000}
-                  hideProgressBar={false}
-                  newestOnTop={false}
-                  closeOnClick
-                  rtl={false}
-                  pauseOnVisibilityChange
-                  draggable
-                  pauseOnHover
-                />
-                <ToastContainer /> <ButtonSensorOff>OFF</ButtonSensorOff>
-              </b>
-              <br />
-              {elemento.nomeSensor}
-              <br />
-              <br />
-
-              <b>
-                Atuador:
-                <ButtonAtuadorAcionar>Acionar</ButtonAtuadorAcionar>
-                <ButtonAtuadorRecuar>Recuar</ButtonAtuadorRecuar>
-              </b>
-              <br />
-              {elemento.nomeAtuador}
-              <br />
-              <br />
+      <Content>
+        <H1Styled>Cômodos</H1Styled>
+        <ul>
+          {this.state.comodos.map((comodo) =>
+            <li key={comodo.id}>
+              <Link to={`/componentes/comodo/${comodo.id}`}>
+                <h2>{comodo.nome}</h2>
+              </Link>
+              <button>Editar</button>
+              <button>Remover</button>
             </li>
-            <br />
-          </Container>
-        )) || <li>Nenhuma residência cadastrada!</li>}
-      </ul>
-    );
+          )
+            ||
+            <li>Nenhuma residência cadastrada!</li>}
+
+          <Link to="/comodo">
+            <Button>Cadastrar novo cômodo</Button>
+          </Link>
+        </ul>
+      </Content>
+    )
   }
 }
 

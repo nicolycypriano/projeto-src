@@ -1,5 +1,65 @@
 import styled from 'styled-components';
 
+export const Content = styled.div`
+  width: 100%;
+  max-width: 1300px;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+
+  ul {
+    width: 100%;
+    max-width: 400px;
+
+    li {
+      background: #fff;
+      padding: 10px;
+      width: 100%;
+      margin: 0 0 10px 0;
+      display: flex;
+      flex-direction: column;
+
+      a {
+        color: #222;
+        font-size: 16px;
+      }
+
+      button {
+        border-radius: 2px;
+        background: #222;
+        color: #fff;
+        padding: 10px;
+        margin: 10px 0 0 0;
+        border: none;
+        background: #7159c1;
+      }
+    }
+  }
+`;
+
+export const H1Styled = styled.h1`
+  color: #fff;
+  font-size: 50px;
+  text-align: center;
+  margin: 10px 0 10px 0;
+`;
+
+export const Button = styled.button`
+  color: #f3f3f3;
+  background-color: #704d89;
+  border: none;
+  height: 50px;
+  line-height: 30px;
+  padding: 0 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 2px;
+  width: 100%;
+`;
+
 export const Container = styled.div`
   margin-bottom: 30px;
   b,
