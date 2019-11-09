@@ -8,38 +8,44 @@ import {
   Input,
   FormGroup,
   Form, 
-  BackButton
 } from './styles';
 import { Link } from 'react-router-dom';
 import api from '../../services/api'
 import { Formik } from "formik";
 
-class Sensor extends Component {
+class Atuador extends Component {
 
   state = {
-    tipoSensor: [],
-    comodo: null
+    tipoAtuador: [],
+    comodo: null,
+    atuadorAtual: null
   }
 
   componentDidMount() {
-    this.setState({ comodo: this.props.match.params.id})
-
     api.get('/componentes')
-      .then(response => {
-        this.setState({ tipoSensor: response.data.tipoSensor });
+    .then(response => {
+      this.setState({ tipoAtuador: response.data.tipoAtuador });
+      console.log(this.tipoAtuador)
       })
       .catch(function (error) {
         console.log(error);
       });
+
+    api.get(`/atuador/${this.props.match.params.id}`)
+    .then(response => {
+      this.setState({ atuadorAtual: response.data.atuador });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
-  handleSubmit = async ({ nome, tipoSensor }, { resetForm }) => {
+  handleSubmit = async ({ nome, tipoAtuador }, { resetForm }) => {
     try {
       const { data } = await api
-        .post('/sensor/create', {
+        .post(`/atuador/edit/${this.state.atuadorAtual[0].id}`, {
           nome: nome,
-          tipoSensor: tipoSensor,
-          comodo: this.state.comodo
+          tipoAtuador: tipoAtuador,
         })
       resetForm()
       // this.props.history.push("/residencia/list");
@@ -53,12 +59,12 @@ class Sensor extends Component {
     return (
       <Container>
         <H1Styled>
-          <h1>Adicionar novo sensor</h1>
+          <h1>Editar atuador</h1>
         </H1Styled>
         <Formik
           initialValues={{
             nome: "",
-            tipoSensor: "1",
+            tipoAtuador: "1",
           }}
           onSubmit={this.handleSubmit}
         >
@@ -83,27 +89,24 @@ class Sensor extends Component {
                 </FormGroup>
                 <FormGroup>              
                 <Select
-                  name="tipoSensor"
+                  name="tipoAtuador"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.tipoSensor}
+                  value={values.tipoAtuador}
                 >
-                  {this.state.tipoSensor.map((opcao) => <option key={opcao.id} value={opcao.id}>{opcao.categoria}</option>) || <option>Selecione um sensor</option>}
+                  {this.state.tipoAtuador.map((opcao) => <option key={opcao.id} value={opcao.id}>{opcao.categoria}</option>) || <option>Selecione um atuador</option>}
                 </Select>
                 </FormGroup>
 
                 <FormGroup>
-                  <Button>Inserir</Button>
+                  <Button>Editar</Button>
                 </FormGroup>
               </Form>
             )}
         </Formik>
-                  <Link to={`/componentes/residencia/${this.props.match.params.idResidencia}/comodo/${this.props.match.params.id}`}>
-                    <BackButton>Voltar</BackButton>
-                  </Link>
       </Container>
     );
   }
 }
 
-export default Sensor;
+export default Atuador;
