@@ -175,9 +175,7 @@ class Comodo extends Component {
       <>
         <ContainerContainer>
 
-
           {/* Cadastrar comodo */}
-          <Container>
             <H1Styled>Adicionar novo cômodo</H1Styled>
             <Select name="tipo" placeholder="Nome do cômodo" onChange={this.handleChange}>
               {this.state.componentes.map((opcao) => <option key={opcao.id} value={opcao.id}>{opcao.nome}</option>) || <option>Selecione um cômodo</option>}
@@ -195,19 +193,17 @@ class Comodo extends Component {
               pauseOnHover
             />
             <ToastContainer />
-          </Container>
-
-
-        </ContainerContainer>
 
         <Link to={`/comodo/list/${this.state.residencia}`}>
           <Button>Finalizar cadastros</Button>
         </Link>
+        </ContainerContainer>
+
       </>
 
-    );
-  }
+    );  
+    }  
 
-}
+    }  
 
 export default Comodo;

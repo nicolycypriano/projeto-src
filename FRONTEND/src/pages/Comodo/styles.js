@@ -26,16 +26,23 @@ export const Button = styled.button`
 export const Container = styled.div`
   width: 100%;
   height: 100%;
-  margin-bottom: 30%;
   margin-right: 30%;
 `;
 
 export const ContainerContainer = styled.div`
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   display: flex;
 `;
 
 export const Select = styled.select`
-  width: 100%;
+  text-align: center;
+  width: 50%;
   height: 40px;
   display: flex;
   margin-top: 10px;
