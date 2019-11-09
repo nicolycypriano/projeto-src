@@ -6,12 +6,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
   Button,
-  ButtonAtuadorAcionar,
-  ButtonAtuadorRecuar,
-  ButtonSensorOn,
-  ButtonSensorOff,
-  Container,
-  ContainerLi,
   H1Styled,
   Content,
   BackButton
@@ -35,14 +29,13 @@ class ComodoList extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props.match.params.id)
     api.get(`/componentes/comodo/residencia/${this.props.match.params.id}`)
-      .then(response => {
-        this.setState({
-          comodos: response.data.comodos,
-          idSensor: response.data.comodos.idSensor
-        });
-      })
+    .then(response => {
+      this.setState({
+        comodos: response.data.comodos,
+        idSensor: response.data.comodos.idSensor
+      });
+    })
       .catch(function(error) {
         console.log(error);
       });
@@ -85,7 +78,7 @@ class ComodoList extends Component {
         <ul>
           {this.state.comodos.map((comodo) =>
             <li key={comodo.id}>
-              <Link to={`/componentes/comodo/${comodo.id}`}>
+              <Link to={`/componentes/residencia/${this.props.match.params.id}/comodo/${comodo.id}`}>
                 <h2>{comodo.nome}</h2>
               </Link>
               <button>Editar</button>

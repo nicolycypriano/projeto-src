@@ -4,6 +4,7 @@ import {
   Select,
   Button,
   Content,
+  BackButton
 } from './styles';
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
@@ -16,6 +17,7 @@ class Componentes extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props)
     api.get(`/componentes/comodo/${this.props.match.params.id}`)
       .then(response => {
         this.setState({ sensores: response.data.sensores, atuadores: response.data.atuadores });
@@ -129,12 +131,16 @@ class Componentes extends Component {
             </li>
           )
             ||
-            <li>Nenhuma atuador cadastrado!</li>}
+            <li>Nenhum atuador cadastrado!</li>}
           
           <Link to={`/comodo/${this.props.match.params.id}/atuador`}>
             <Button>Cadastrar novo atuador</Button>
           </Link>
         </ul>
+
+        <Link to={`/comodo/list/${this.props.match.params.idResidencia}`}>
+          <BackButton>Voltar</BackButton>
+        </Link>
       </Content>
     );
   }

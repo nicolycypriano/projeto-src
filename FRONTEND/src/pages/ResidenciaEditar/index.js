@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { H1Styled, Input, Button, FormGroup, Form, FieldErrorMessage, Container } from './styles';
+import { H1Styled, Input, Button, FormGroup, Form, FieldErrorMessage, Container, BackButton } from './styles';
 import api from '../../services/api';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -122,13 +122,12 @@ class ResidenciaEditar extends Component {
 
                 <FormGroup>
                   <Button>Editar</Button>
-                  <Link to={`/residencia/list`}>
-                    <Button>Voltar</Button>
-                  </Link>
+
                 </FormGroup>
               </Form>
             )}
         </Formik>
+            <BackButton onClick={() => this.props.history.go(-1)}>Voltar</BackButton>
 
 
         <ToastContainer
