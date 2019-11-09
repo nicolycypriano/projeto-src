@@ -23,6 +23,19 @@ class ListagemResidencia extends Component {
         console.log(error);
       });
   }
+  
+  handleRemove = (id) => {
+    api.post(`/residencia/remove/${id}`)
+    .then(response => {
+        if (response.data.residencia != null) {
+          let residencias = this.state.residencias.filter((residencia) => residencia.id != id);
+          this.setState({ residencias: residencias});
+        }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });   
+  }
 
   render() {
     return (
@@ -37,7 +50,7 @@ class ListagemResidencia extends Component {
                 <h2>{residencia.numero}</h2>
               </Link>
               <button>Editar</button>
-              <button>Remover</button>
+              <button onClick={() => this.handleRemove(residencia.id)}>Remover</button>
             </li>
           )
             ||

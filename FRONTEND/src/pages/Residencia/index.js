@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { Link } from 'react-router-dom';
 
 class Main extends Component {
   // Residencia
@@ -133,6 +134,9 @@ class Main extends Component {
 
                 <FormGroup>
                   <Button>Inserir</Button>
+                  <Link to={`/residencia/list`}>
+                    <Button>Voltar</Button>
+                  </Link>
                 </FormGroup>
               </Form>
             )}
