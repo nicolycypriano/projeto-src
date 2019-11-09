@@ -17,12 +17,12 @@ class Sensor extends Component {
 
   state = {
     tipoSensor: [],
-    comodo: null
+    comodo: null,
+    nomeAtual: null,
+    tipoSensorAtual:  null
   }
 
   componentDidMount() {
-    this.setState({ comodo: this.props.match.params.id})
-
     api.get('/componentes')
       .then(response => {
         this.setState({ tipoSensor: response.data.tipoSensor });
@@ -30,6 +30,14 @@ class Sensor extends Component {
       .catch(function (error) {
         console.log(error);
       });
+
+    api.get(`/sensor/${this.props.match.params.id}`)
+    .then(response => {
+      this.setState({ tipoSensor: response.data.tipoSensor });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   handleSubmit = async ({ nome, tipoSensor }, { resetForm }) => {
@@ -52,7 +60,7 @@ class Sensor extends Component {
     return (
       <Container>
         <H1Styled>
-          <h1>Adicionar novo sensor</h1>
+          <h1>Editar sensor</h1>
         </H1Styled>
         <Formik
           initialValues={{
@@ -93,9 +101,7 @@ class Sensor extends Component {
 
                 <FormGroup>
                   <Button>Inserir</Button>
-                  <Link to={`/componentes/comodo/${this.state.comodo}`}>
-                    <Button>Voltar</Button>
-                  </Link>
+                  <Link to={`/componentes/comodo/${this.state.comodo}`}>Voltar</Link>
                 </FormGroup>
               </Form>
             )}

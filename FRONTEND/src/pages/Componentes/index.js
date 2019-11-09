@@ -28,11 +28,19 @@ class Componentes extends Component {
   handleChecar = (id) => {
     api.post(`/sensor/acionar/${id}`)
     .then(response => {
-        let sensor = this.state.sensores.filter((sensor) => sensor.id == id);
-        sensor.valor =  response.data.valor;
-        console.log(sensor);
 
-        this.setState({ sensores: response.data.sensores, atuadores: response.data.atuadores });
+      this.setState(state => {
+        const list = state.sensores.map((item) => {
+          if (item.id === id) {
+            return item.valor = response.data.valor;
+          } else {
+            return item;
+          }
+        });
+        return {
+          list,
+        };
+      });
     })
     .catch(function (error) {
       console.log(error);
@@ -62,8 +70,10 @@ class Componentes extends Component {
               <h2>{sensor.nome}</h2>
               <h2>{sensor.categoria}</h2>
               <h2>{sensor.valor}</h2>
-              {/* <button onClick={this.handleChecar(sensor.id)}>Checar</button> */}
-              <button>Editar</button>
+              <button onClick={() => this.handleChecar(sensor.id)}>Checar</button>
+              <Link to={`/sensor/edit/${sensor.id}`}>
+                <button>Editar</button>
+              </Link>
               <button onClick={() => this.handleRemove(sensor.id)}>Remover</button>
             </li>
           )

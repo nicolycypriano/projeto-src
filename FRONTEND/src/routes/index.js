@@ -14,6 +14,7 @@ import Profile from '../pages/Profile';
 import ListagemResidencia from '../pages/ListagemResidencia';
 import ComodoList from '~/pages/ComodoList';
 import Componentes from '../pages/Componentes';
+import SensorEditar from '../pages/SensorEditar'
 
 export default function Routes() {
   return (
@@ -23,6 +24,7 @@ export default function Routes() {
       <Route path="/residencia/list" component={ListagemResidencia} />
       <Route path="/residencia" component={Residencia} />
       <Route path="/comodo/:id/sensor" component={Sensor} />
+      <Route path="/sensor/edit/:id" component={SensorEditar} />
       <Route path="/comodo/list/:id" component={ComodoList} />
       <Route path="/componentes/comodo/:id" component={Componentes} />
       <Route path="/comodo" component={Comodo} />
