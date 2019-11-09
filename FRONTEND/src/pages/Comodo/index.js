@@ -200,7 +200,7 @@ class Comodo extends Component {
 
         </ContainerContainer>
 
-        <Link to="/residencia/list">
+        <Link to={`/comodo/list/${this.state.residencia}`}>
           <Button>Finalizar cadastros</Button>
         </Link>
       </>
