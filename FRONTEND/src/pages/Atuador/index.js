@@ -22,6 +22,7 @@ class Atuador extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props)
     this.setState({ comodo: this.props.match.params.id})
 
     api.get('/componentes')
@@ -97,9 +98,11 @@ class Atuador extends Component {
               </Form>
             )}
         </Formik>
-                  <Link to={`/componentes/comodo/${this.state.comodo}`}>
+                  <Link to={`/componentes/residencia/${this.props.match.params.idResidencia}/comodo/${this.props.match.params.id}`}>
                     <BackButton>Voltar</BackButton>
                   </Link>
+
+                  
       </Container>
     );
   }

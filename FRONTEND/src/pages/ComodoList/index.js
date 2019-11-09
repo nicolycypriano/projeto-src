@@ -60,10 +60,9 @@ class ComodoList extends Component {
   handleRemove = (id) => {
     api.post(`/comodo/remove/${id}`)
     .then(response => {
-        if (response.data.comodo != null) {
           let comodos = this.state.comodos.filter((comodo) => comodo.id != id);
           this.setState({ comodos: comodos});
-        }
+        
     })
     .catch(function (error) {
       console.log(error);

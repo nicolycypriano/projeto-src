@@ -133,7 +133,7 @@ class Componentes extends Component {
             ||
             <li>Nenhum atuador cadastrado!</li>}
           
-          <Link to={`/comodo/${this.props.match.params.id}/atuador`}>
+          <Link to={`/residencia/${this.props.match.params.idResidencia}/comodo/${this.props.match.params.id}/atuador`}>
             <Button>Cadastrar novo atuador</Button>
           </Link>
         </ul>
