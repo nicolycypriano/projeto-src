@@ -63,6 +63,19 @@ class ComodoList extends Component {
       });
   };
 
+  handleRemove = (id) => {
+    api.post(`/comodo/remove/${id}`)
+    .then(response => {
+        if (response.data.comodo != null) {
+          let comodos = this.state.comodos.filter((comodo) => comodo.id != id);
+          this.setState({ comodos: comodos});
+        }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });   
+  }
+
   render() {
     return (
       <Content>
@@ -74,7 +87,7 @@ class ComodoList extends Component {
                 <h2>{comodo.nome}</h2>
               </Link>
               <button>Editar</button>
-              <button>Remover</button>
+              <button onClick={() => this.handleRemove(comodo.id)}>Remover</button>
             </li>
           )
             ||
