@@ -24,11 +24,11 @@ export default function Routes() {
       <Route path="/residencia/list" component={ListagemResidencia} />
       <Route path="/residencia" component={Residencia} />
       <Route path="/comodo/:id/sensor" component={Sensor} />
+      <Route path="/comodo/:id/atuador" component={Atuador} />
       <Route path="/sensor/edit/:id" component={SensorEditar} />
       <Route path="/comodo/list/:id" component={ComodoList} />
       <Route path="/componentes/comodo/:id" component={Componentes} />
       <Route path="/comodo" component={Comodo} />
-      <Route path="/atuador" component={Atuador} />
       <Route path="/casa" component={Casa} />
       <Route path="/register" component={SignUp} />
     </Switch>

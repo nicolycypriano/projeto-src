@@ -47,13 +47,44 @@ class Componentes extends Component {
     });   
   }
 
+  
+  handleAcionar = (id) => {
+    api.post(`/atuador/movimentar/${id}`)
+    .then(response => {
+      this.setState(state => {
+        const list = state.atuadores.map((item) => {
+          if (item.id === id) {
+            return item.valor = response.data.valor;
+          } else {
+            return item;
+          }
+        });
+        return {
+          list,
+        };
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });   
+  }
 
-  handleRemove = (id) => {
-    console.log(id)
+  handleRemoveSensor = (id) => {
     api.post(`/sensor/remove/${id}`)
     .then(response => {
         let sensores = this.state.sensores.filter((sensor) => sensor.id != id);
         this.setState({ sensores: sensores});
+    })
+    .catch(function (error) {
+      console.log(error);
+    });   
+  }
+
+  handleRemoveAtuador = (id) => {
+    api.post(`/atuador/remove/${id}`)
+    .then(response => {
+        let atuadores = this.state.atuadores.filter((atuador) => atuador.id != id);
+        this.setState({ atuadores: atuadores});
     })
     .catch(function (error) {
       console.log(error);
@@ -74,7 +105,7 @@ class Componentes extends Component {
               <Link to={`/sensor/edit/${sensor.id}`}>
                 <button>Editar</button>
               </Link>
-              <button onClick={() => this.handleRemove(sensor.id)}>Remover</button>
+              <button onClick={() => this.handleRemoveSensor(sensor.id)}>Remover</button>
             </li>
           )
             ||
@@ -91,16 +122,16 @@ class Componentes extends Component {
             <li key={atuador.id}>
               <h2>{atuador.nome}</h2>
               <h2>{atuador.categoria}</h2>
-              <h2>{atuador.valor}</h2>
-              <button>Acionar</button>
+              <h2>{atuador.valor ? 'Acionado' : 'Não acionado'}</h2>
+              <button onClick={() => this.handleAcionar(atuador.id)}>Acionar</button>
               <button>Editar</button>
-              <button>Remover</button>
+              <button onClick={() => this.handleRemoveAtuador(atuador.id)}>Remover</button>
             </li>
           )
             ||
             <li>Nenhuma atuador cadastrado!</li>}
-
-          <Link to="/residencia">
+          
+          <Link to={`/comodo/${this.props.match.params.id}/atuador`}>
             <Button>Cadastrar novo atuador</Button>
           </Link>
         </ul>
