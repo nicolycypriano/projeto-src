@@ -35,6 +35,7 @@ export const Content = styled.div`
         border: none;
         background: #7159c1;
       }
+
     }
   }
 `;
@@ -151,4 +152,20 @@ export const ButtonAtuadorRecuar = styled.button`
   :hover {
     opacity: 0.7;
   }
+`;
+
+
+export const BackButton = styled.button`
+  color: #f3f3f3;
+  background-color: #704d89;
+  border: none;
+  height: 50px;
+  line-height: 30px;
+  padding: 0 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 2px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 `;

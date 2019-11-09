@@ -5,6 +5,7 @@ import api from '../../services/api';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
+  Button,
   ButtonAtuadorAcionar,
   ButtonAtuadorRecuar,
   ButtonSensorOn,
@@ -12,8 +13,8 @@ import {
   Container,
   ContainerLi,
   H1Styled,
-  Button,
   Content,
+  BackButton
 } from './styles';
 
 class ComodoList extends Component {
@@ -78,6 +79,7 @@ class ComodoList extends Component {
 
   render() {
     return (
+      <>
       <Content>
         <H1Styled>Cômodos</H1Styled>
         <ul>
@@ -97,7 +99,13 @@ class ComodoList extends Component {
             <Button>Cadastrar novo cômodo</Button>
           </Link>
         </ul>
+      
+       <Link to="/residencia/list">
+        <BackButton>Voltar</BackButton>
+        </Link>
       </Content>
+
+      </>
     )
   }
 }
