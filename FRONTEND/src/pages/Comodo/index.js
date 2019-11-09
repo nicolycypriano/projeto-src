@@ -78,9 +78,9 @@ class Comodo extends Component {
     nomeSensor: '',
     nomeAtuador: ''
   }
-  
+
   componentDidMount() {
-        this.setState({ residencia: this.props.match.params.id });
+    this.setState({ residencia: this.props.match.params.id });
 
     api.get('/componentes')
       .then(response => {
@@ -121,8 +121,93 @@ class Comodo extends Component {
       });
   }
 
+
+  // CADASTRA ATUADOR
+  cadastraAtuador = () => {
+    console.log(this.state);
+
+    api.post('/atuador/create', {
+      'comodo': this.state.comodo,
+      'tipoAtuador': this.state.tipoAtuadorId,
+      'nome': this.state.nomeAtuador
+    })
+      .then(response => {
+        // this.setState({ redirect: true, comodo: response.data.comodo });
+        this.notifyAtuadorSuccess();
+      })
+      .catch(error => {
+        this.notifyAtuadorError();
+        console.log(error);
+      });
   }
 
 
+  // CADASTRA SENSOR
+  cadastraSensor = () => {
+    api.post('/sensor/create', {
+      'comodo': this.state.comodo,
+      'tipoSensor': this.state.tipoSensorId,
+      'nome': this.state.nomeSensor
+    })
+      .then(response => {
+        //Aqui pode redirecionar
+        this.notifySensorSuccess();
+      })
+      .catch(error => {
+        this.notifySensorError();
+        console.log(error);
+      });
+  }
+
+  handleOnChange = e => {
+    if (e.target.name == 'nome-sensor') {
+      this.setState({ nomeSensor: e.target.value });
+    }
+
+    if (e.target.name == 'nome-atuador') {
+      this.setState({ nomeAtuador: e.target.value });
+    }
+  }
+
+
+  render() {
+    return (
+      <>
+        <ContainerContainer>
+
+
+          {/* Cadastrar comodo */}
+          <Container>
+            <H1Styled>Adicionar novo cômodo</H1Styled>
+            <Select name="tipo" placeholder="Nome do cômodo" onChange={this.handleChange}>
+              {this.state.componentes.map((opcao) => <option key={opcao.id} value={opcao.id}>{opcao.nome}</option>) || <option>Selecione um cômodo</option>}
+            </Select>
+            <Button onClick={this.cadastraComodo}>Cadastrar Cômodo</Button>
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnVisibilityChange
+              draggable
+              pauseOnHover
+            />
+            <ToastContainer />
+          </Container>
+
+
+        </ContainerContainer>
+
+        <Link to="/residencia/list">
+          <Button>Finalizar cadastros</Button>
+        </Link>
+      </>
+
+    );
+  }
+
+}
 
 export default Comodo;
