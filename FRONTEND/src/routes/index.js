@@ -22,6 +22,7 @@ export default function Routes() {
     <Switch>
       <Route path="/" exact component={SignIn} />
       <Route path="/profile" component={Profile} />
+      <Route path="/residencia/:id/comodo" component={Comodo} />
       <Route path="/residencia/list" component={ListagemResidencia} />
       <Route path="/residencia/edit/:id" component={ResidenciaEditar} />
       <Route path="/residencia" component={Residencia} />
@@ -30,7 +31,6 @@ export default function Routes() {
       <Route path="/sensor/edit/:id" component={SensorEditar} />
       <Route path="/comodo/list/:id" component={ComodoList} />
       <Route path="/componentes/comodo/:id" component={Componentes} />
-      <Route path="/comodo" component={Comodo} />
       <Route path="/casa" component={Casa} />
       <Route path="/register" component={SignUp} />
     </Switch>
