@@ -78,9 +78,9 @@ class Comodo extends Component {
     nomeSensor: '',
     nomeAtuador: ''
   }
-
+  
   componentDidMount() {
-    this.setState({ residencia: this.props.location.state.residencia });
+        this.setState({ residencia: this.props.match.params.id });
 
     api.get('/componentes')
       .then(response => {
@@ -121,147 +121,8 @@ class Comodo extends Component {
       });
   }
 
-
-  // CADASTRA ATUADOR
-  cadastraAtuador = () => {
-    console.log(this.state);
-
-    api.post('/atuador/create', {
-      'comodo': this.state.comodo,
-      'tipoAtuador': this.state.tipoAtuadorId,
-      'nome': this.state.nomeAtuador
-    })
-      .then(response => {
-        // this.setState({ redirect: true, comodo: response.data.comodo });
-        this.notifyAtuadorSuccess();
-      })
-      .catch(error => {
-        this.notifyAtuadorError();
-        console.log(error);
-      });
   }
 
 
-  // CADASTRA SENSOR
-  cadastraSensor = () => {
-    api.post('/sensor/create', {
-      'comodo': this.state.comodo,
-      'tipoSensor': this.state.tipoSensorId,
-      'nome': this.state.nomeSensor
-    })
-      .then(response => {
-        //Aqui pode redirecionar
-        this.notifySensorSuccess();
-      })
-      .catch(error => {
-        this.notifySensorError();
-        console.log(error);
-      });
-  }
-
-  handleOnChange = e => {
-    if (e.target.name == 'nome-sensor') {
-      this.setState({ nomeSensor: e.target.value });
-    }
-
-    if (e.target.name == 'nome-atuador') {
-      this.setState({ nomeAtuador: e.target.value });
-    }
-  }
-
-
-  render() {
-    return (
-      <>
-        <ContainerContainer>
-
-
-          {/* Cadastrar comodo */}
-          <Container>
-            <H1Styled>Adicionar novo cômodo</H1Styled>
-            <Select name="tipo" placeholder="Nome do cômodo" onChange={this.handleChange}>
-              {this.state.componentes.map((opcao) => <option key={opcao.id} value={opcao.id}>{opcao.nome}</option>) || <option>Selecione um cômodo</option>}
-            </Select>
-            <Button onClick={this.cadastraComodo}>Cadastrar Cômodo</Button>
-            <ToastContainer
-              position="top-right"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnVisibilityChange
-              draggable
-              pauseOnHover
-            />
-            <ToastContainer />
-          </Container>
-
-
-
-          {/* Cadastrar atuador */}
-          <Container>
-            <H1Styled>Adicionar novo atuador</H1Styled>
-            <Select name="tipo" placeholder="Nome do atuador" onChange={this.handleChangeAtuador}>
-              {this.state.tipoAtuador.map((opcao) => <option key={opcao.id} value={opcao.id}>{opcao.categoria}</option>) || <option>Selecione um atuador</option>}
-            </Select>
-            <Input
-              name="nome-atuador"
-              onChange={this.handleOnChange}
-              placeholder="Nome do atuador">
-            </Input>
-            <Button onClick={this.cadastraAtuador}>Cadastrar Atuador</Button>
-            <ToastContainer
-              position="top-right"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnVisibilityChange
-              draggable
-              pauseOnHover
-            />
-            <ToastContainer />
-          </Container>
-
-
-
-
-          {/* Cadastrar Sensor */}
-          <Container>
-            <H1Styled>Adicionar novo sensor</H1Styled>
-            <Select name="tipo" placeholder="Nome do sensor" onChange={this.handleChangeSensor}>
-              {this.state.tipoSensor.map((opcao) => <option key={opcao.id} value={opcao.id}>{opcao.categoria}</option>) || <option>Selecione um sensor</option>}
-            </Select>
-            <Input
-              name="nome-sensor"
-              onChange={this.handleOnChange}
-              placeholder="Nome do sensor">
-            </Input>
-            <Button onClick={this.cadastraSensor}>Cadastrar Sensor</Button>
-            <ToastContainer
-              position="top-right"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnVisibilityChange
-              draggable
-              pauseOnHover
-            />
-          </Container>
-        </ContainerContainer>
-
-        <Link to="/residencia/list">
-          <Button>Finalizar cadastros</Button>
-        </Link>
-      </>
-
-    );
-  }
-
-}
 
 export default Comodo;

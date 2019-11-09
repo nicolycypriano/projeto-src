@@ -34,6 +34,7 @@ class ComodoList extends Component {
   };
 
   componentDidMount() {
+    console.log(this.props.match.params.id)
     api.get(`/componentes/comodo/residencia/${this.props.match.params.id}`)
       .then(response => {
         this.setState({
@@ -79,7 +80,7 @@ class ComodoList extends Component {
             ||
             <li>Nenhuma residência cadastrada!</li>}
 
-          <Link to="/comodo">
+          <Link to={`/residencia/${this.props.match.params.id}/comodo`}>
             <Button>Cadastrar novo cômodo</Button>
           </Link>
         </ul>
