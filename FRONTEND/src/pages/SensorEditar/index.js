@@ -18,8 +18,7 @@ class Sensor extends Component {
   state = {
     tipoSensor: [],
     comodo: null,
-    nomeAtual: null,
-    tipoSensorAtual:  null
+    sensorAtual: null
   }
 
   componentDidMount() {
@@ -33,7 +32,7 @@ class Sensor extends Component {
 
     api.get(`/sensor/${this.props.match.params.id}`)
     .then(response => {
-      this.setState({ tipoSensor: response.data.tipoSensor });
+      this.setState({ sensorAtual: response.data.sensor });
     })
     .catch(function (error) {
       console.log(error);
@@ -43,10 +42,9 @@ class Sensor extends Component {
   handleSubmit = async ({ nome, tipoSensor }, { resetForm }) => {
     try {
       const { data } = await api
-        .post('/sensor/create', {
+        .post(`/sensor/edit/${this.state.sensorAtual[0].id}`, {
           nome: nome,
           tipoSensor: tipoSensor,
-          comodo: this.state.comodo
         })
       resetForm()
       // this.props.history.push("/residencia/list");
@@ -100,8 +98,7 @@ class Sensor extends Component {
                 </FormGroup>
 
                 <FormGroup>
-                  <Button>Inserir</Button>
-                  <Link to={`/componentes/comodo/${this.state.comodo}`}>Voltar</Link>
+                  <Button>Editar</Button>
                 </FormGroup>
               </Form>
             )}
