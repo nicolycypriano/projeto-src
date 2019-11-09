@@ -8,6 +8,7 @@ import {
   Input,
   FormGroup,
   Form, 
+  BackButton
 } from './styles';
 import { Link } from 'react-router-dom';
 import api from '../../services/api'
@@ -93,13 +94,13 @@ class Sensor extends Component {
 
                 <FormGroup>
                   <Button>Inserir</Button>
-                  <Link to={`/componentes/comodo/${this.state.comodo}`}>
-                    <Button>Voltar</Button>
-                  </Link>
                 </FormGroup>
               </Form>
             )}
         </Formik>
+                  <Link to={`/componentes/comodo/${this.state.comodo}`}>
+                    <BackButton>Voltar</BackButton>
+                  </Link>
       </Container>
     );
   }
