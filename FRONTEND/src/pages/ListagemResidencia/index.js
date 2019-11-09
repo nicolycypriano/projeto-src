@@ -49,7 +49,9 @@ class ListagemResidencia extends Component {
                 <h2>{residencia.logradouro}</h2>
                 <h2>{residencia.numero}</h2>
               </Link>
-              <button>Editar</button>
+              <Link to={`/residencia/edit/${residencia.id}`}>
+                <button>Editar</button>
+              </Link>
               <button onClick={() => this.handleRemove(residencia.id)}>Remover</button>
             </li>
           )
