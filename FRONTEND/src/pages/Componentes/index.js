@@ -123,7 +123,7 @@ class Componentes extends Component {
               <h2>{atuador.nome}</h2>
               <h2>{atuador.categoria}</h2>
               <h2>{atuador.valor ? 'Acionado' : 'Não acionado'}</h2>
-              <button onClick={() => this.handleAcionar(atuador.id)}>Acionar</button>
+              <button onClick={() => this.handleAcionar(atuador.id)}>{atuador.valor ? 'Acionar' : 'Voltar posicão padrão'}</button>
               <button>Editar</button>
               <button onClick={() => this.handleRemoveAtuador(atuador.id)}>Remover</button>
             </li>
