@@ -34,6 +34,7 @@ export const Content = styled.div`
         margin: 10px 0 0 0;
         border: none;
         background: #7159c1;
+        width: 100%;
       }
     }
   }

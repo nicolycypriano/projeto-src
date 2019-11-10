@@ -7,6 +7,7 @@ import {
 } from './styles';
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
+import Header from '../../components/Header'
 
 class ListagemResidencia extends Component {
 
@@ -39,6 +40,8 @@ class ListagemResidencia extends Component {
 
   render() {
     return (
+      <>
+      <Header />
       <Content>
         <H1Styled>Residências</H1Styled>
         <ul>
@@ -63,6 +66,7 @@ class ListagemResidencia extends Component {
           </Link>
         </ul>
       </Content>
+      </>
     );
   }
 }
