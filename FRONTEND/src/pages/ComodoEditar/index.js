@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { H1Styled, Input, Button, FormGroup, Form, FieldErrorMessage, Container, BackButton } from './styles';
+import { H1Styled, Input, Button, FormGroup, Form, FieldErrorMessage, Container, BackButton, Select } from './styles';
 import api from '../../services/api';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Formik } from "formik";
 import { Link } from 'react-router-dom';
 
-class ResidenciaEditar extends Component {
+class ComodoEditar extends Component {
   // Residencia
   notifyResidenciaSuccess = () => toast.success('Residência cadastrado com sucesso', {
     position: "top-right",
@@ -28,32 +28,29 @@ class ResidenciaEditar extends Component {
   });
 
   state = {
-    residencia: null,
-    nome: '',
-    logradouro: '',
-    numero: 0,
+    comodoId: null,
+    tipoComodo: [],
+    nome: ''
   };
 
   componentDidMount() {
-    this.setState({ residencia: this.props.match.params.id})
-
-    api.get(`/residencia/${this.state.residencia}`)
-      .then(response => {
-        this.setState({ residencia: response.data.residencia, nome: response.data.residencia.nome, logradouro : response.data.residencia.logradouro, nuemro: response.data.residencia.numero });
+    this.setState({ comodoId: this.props.match.params.id})
+    
+    api.get('/componentes')
+    .then(response => {
+      this.setState({ tipoComodo: response.data.tipoComodo });
+      console.log(response)
       })
       .catch(function (error) {
         console.log(error);
       });
   }
 
-  handleSubmit = async ({ name, logradouro, numero }, { resetForm }) => {
+  handleSubmit = async ({ tipoComodo }, { resetForm }) => {
     try {
-
       const { data } = await api
-        .post(`/residencia/edit/${this.state.residencia}`, {
-          nome: name,
-          logradouro: logradouro,
-          numero: numero,
+        .post(`/comodo/edit/${this.state.comodoId}`, {
+          tipoComodo: tipoComodo,
         })
       resetForm()
       // this.props.history.push("/residencia/list");
@@ -68,14 +65,11 @@ class ResidenciaEditar extends Component {
     return (
       <Container>
         <H1Styled>
-          <h1>Editar residência</h1>
+          <h1>Editar comodo</h1>
         </H1Styled>
         <Formik
           initialValues={{
-            name: this.state.nome,
-            logradouro: this.state.logradouro,
-            numero: this.state.numero,
-            dono: "2"
+            tipoComodo: this.state.tipoComodo
           }}
           onSubmit={this.handleSubmit}
         >
@@ -90,34 +84,14 @@ class ResidenciaEditar extends Component {
               <Form onSubmit={handleSubmit}>
 
                 <FormGroup>
-
-                  <Input
-                    name="name"
-                    placeholder="Casa"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.name}
-                  />
-                </FormGroup>
-                <FormGroup>
-
-                  <Input
-                    name="logradouro"
-                    placeholder="Rua"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.logradouro}
-                  />
-                </FormGroup>
-                <FormGroup>
-
-                  <Input
-                    name="numero"
-                    placeholder="Número"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.numero}
-                  />
+                <Select
+                  name="tipoComodo"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.tipoComodo}
+                >
+                {this.state.tipoComodo.map((opcao) => <option key={opcao.id} value={opcao.id}>{opcao.nome}</option>) || <option>Selecione um tipo de comodo</option>}
+                </Select>
                 </FormGroup>
 
                 <FormGroup>
@@ -146,4 +120,4 @@ class ResidenciaEditar extends Component {
   }
 }
 
-export default ResidenciaEditar;
+export default ComodoEditar;

@@ -80,7 +80,9 @@ class ComodoList extends Component {
               <Link to={`/componentes/residencia/${this.props.match.params.id}/comodo/${comodo.id}`}>
                 <h2>{comodo.nome}</h2>
               </Link>
-              <button>Editar</button>
+              <Link to={`/comodo/edit/${comodo.id}`}>
+                <button>Editar</button>
+              </Link>
               <button onClick={() => this.handleRemove(comodo.id)}>Remover</button>
             </li>
           )

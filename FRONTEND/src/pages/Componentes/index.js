@@ -113,7 +113,7 @@ class Componentes extends Component {
             ||
             <li>Nenhuma sensor cadastrado!</li>}
 
-          <Link to={`/comodo/${this.props.match.params.id}/sensor`}>
+          <Link to={`/residencia/${this.props.match.params.idResidencia}/comodo/${this.props.match.params.id}/sensor`}>
             <Button>Cadastrar novo sensor</Button>
           </Link>
         </ul>

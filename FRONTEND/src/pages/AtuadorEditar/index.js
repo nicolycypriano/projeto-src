@@ -25,15 +25,15 @@ class Atuador extends Component {
     api.get('/componentes')
     .then(response => {
       this.setState({ tipoAtuador: response.data.tipoAtuador });
-      console.log(this.tipoAtuador)
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    
     api.get(`/atuador/${this.props.match.params.id}`)
     .then(response => {
       this.setState({ atuadorAtual: response.data.atuador });
+      console.log(response.data)
     })
     .catch(function (error) {
       console.log(error);
@@ -41,6 +41,7 @@ class Atuador extends Component {
   }
 
   handleSubmit = async ({ nome, tipoAtuador }, { resetForm }) => {
+    console.log(tipoAtuador)
     try {
       const { data } = await api
         .post(`/atuador/edit/${this.state.atuadorAtual[0].id}`, {
