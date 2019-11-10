@@ -33,10 +33,12 @@ class ListagemResidencia extends Component {
           toast.success("Residência removida com sucesso!")
           let residencias = this.state.residencias.filter((residencia) => residencia.id != id);
           this.setState({ residencias: residencias});        
-        }        
-        toast.error(response.data)
-    })
-    .catch(function (error) {
+        }       
+        else {  
+          toast.error("Desculpe, mas existem cõmodos associados a esta residencia.")
+        }
+      })
+      .catch(function (error) {
       
       console.log(error);
     });   
