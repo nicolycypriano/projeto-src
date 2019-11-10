@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { H1Styled, Select, Button, Input, Container, ContainerContainer } from './styles';
+import { H1Styled, Input, Button, FormGroup, Form, FieldErrorMessage, Container, BackButton, Select } from './styles';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import { ToastContainer, toast } from 'react-toastify';
+import { Formik } from "formik";
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -27,56 +28,10 @@ class Comodo extends Component {
     draggable: true,
   });
 
-  // Atuador
-  notifyAtuadorSuccess = () => toast.success('Atuador cadastrado com sucesso', {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-  });
-
-  notifyAtuadorError = () => toast.error('Não foi possível cadastrar esse atuador', {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-  });
-
-  // Sensor
-  notifySensorSuccess = () => toast.success('Sensor cadastrado com sucesso', {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-  });
-
-  notifySensorError = () => toast.error('Não foi possível cadastrar esse sensor', {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-  });
-
   state = {
     residencia: null,
-    componentes: [],
-    tipoComodo: null,
-    tipoAtuador: [],
-    tipoAtuadorId: null,
-    redirect: false,
+    tipoComodo: [],
     comodo: null,
-    tipoSensorId: null,
-    tipoSensor: [],
-    nomeSensor: '',
-    nomeAtuador: ''
   }
 
   componentDidMount() {
@@ -84,126 +39,83 @@ class Comodo extends Component {
 
     api.get('/componentes')
       .then(response => {
-        this.setState({ componentes: response.data.tipoComodo, tipoAtuador: response.data.tipoAtuador, tipoSensor: response.data.tipoSensor });
+        this.setState({ tipoComodo: response.data.tipoComodo });
       })
       .catch(function (error) {
         console.log(error);
       });
   }
 
-  handleChange = e => {
-    this.setState({ tipoComodo: e.target.value });
-  }
+  handleSubmit = async ({ tipoComodo }, { resetForm }) => {
+    try {
+      const { data } = await api
+        .post(`/comodo/create`, {
+          residencia: this.state.residencia,
+          tipoComodo: tipoComodo,
+        })
+      resetForm()
+      // this.props.history.push("/residencia/list");
 
-  handleChangeAtuador = e => {
-    this.setState({ tipoAtuadorId: e.target.value });
-  }
-
-  handleChangeSensor = e => {
-    this.setState({ tipoSensorId: e.target.value });
-  }
-
-
-
-  // CADASTRA COMODO
-  cadastraComodo = () => {
-    api.post('/comodo/create', {
-      'residencia': this.state.residencia,
-      'tipoComodo': this.state.tipoComodo
-    })
-      .then(response => {
-        this.setState({ comodo: response.data.comodo });
-        this.notifyComodoSuccess();
-      })
-      .catch(error => {
-        console.log(error);
-        this.notifyComodoError();
-      });
-  }
-
-
-  // CADASTRA ATUADOR
-  cadastraAtuador = () => {
-    console.log(this.state);
-
-    api.post('/atuador/create', {
-      'comodo': this.state.comodo,
-      'tipoAtuador': this.state.tipoAtuadorId,
-      'nome': this.state.nomeAtuador
-    })
-      .then(response => {
-        // this.setState({ redirect: true, comodo: response.data.comodo });
-        this.notifyAtuadorSuccess();
-      })
-      .catch(error => {
-        this.notifyAtuadorError();
-        console.log(error);
-      });
-  }
-
-
-  // CADASTRA SENSOR
-  cadastraSensor = () => {
-    api.post('/sensor/create', {
-      'comodo': this.state.comodo,
-      'tipoSensor': this.state.tipoSensorId,
-      'nome': this.state.nomeSensor
-    })
-      .then(response => {
-        //Aqui pode redirecionar
-        this.notifySensorSuccess();
-      })
-      .catch(error => {
-        this.notifySensorError();
-        console.log(error);
-      });
-  }
-
-  handleOnChange = e => {
-    if (e.target.name == 'nome-sensor') {
-      this.setState({ nomeSensor: e.target.value });
-    }
-
-    if (e.target.name == 'nome-atuador') {
-      this.setState({ nomeAtuador: e.target.value });
+    } catch (err) {
+      console.log(err)
     }
   }
-
 
   render() {
     return (
-      <>
-        <ContainerContainer>
+      <Container>
+        <H1Styled>
+          <h1>Criar comodo</h1>
+        </H1Styled>
+        <Formik
+          initialValues={{
+            tipoComodo: this.state.tipoComodo[0]
+          }}
+          onSubmit={this.handleSubmit}
+        >
+          {({
+            values,
+            handleChange,
+            handleBlur,
+            errors,
+            touched,
+            handleSubmit,
+          }) => (
+              <Form onSubmit={handleSubmit}>
+                <FormGroup>
+                <Select
+                  name="tipoComodo"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.tipoComodo}
+                >
+                {this.state.tipoComodo.map((opcao) => <option key={opcao.id} value={opcao.id}>{opcao.nome}</option>) || <option>Selecione um tipo de comodo</option>}
+                </Select>
+                </FormGroup>
 
-          {/* Cadastrar comodo */}
-            <H1Styled>Adicionar novo cômodo</H1Styled>
-            <Select name="tipo" placeholder="Nome do cômodo" onChange={this.handleChange}>
-              {this.state.componentes.map((opcao) => <option key={opcao.id} value={opcao.id}>{opcao.nome}</option>) || <option>Selecione um cômodo</option>}
-            </Select>
-            <Button onClick={this.cadastraComodo}>Cadastrar Cômodo</Button>
-            <ToastContainer
-              position="top-right"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnVisibilityChange
-              draggable
-              pauseOnHover
-            />
-            <ToastContainer />
+                <FormGroup>
+                  <Button>Cadastrar</Button>
 
-        <Link to={`/comodo/list/${this.state.residencia}`}>
-          <Button>Finalizar cadastros</Button>
-        </Link>
-        </ContainerContainer>
+                </FormGroup>
+              </Form>
+            )}
+        </Formik>
+        <BackButton onClick={() => this.props.history.go(-1)}>Voltar</BackButton>
 
-      </>
-
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnVisibilityChange
+          draggable
+          pauseOnHover
+        />
+      </Container>
     );  
-    }  
-
-    }  
+  }  
+}  
 
 export default Comodo;

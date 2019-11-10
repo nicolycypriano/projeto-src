@@ -1,36 +1,7 @@
 import styled from 'styled-components';
-
-export const H1Styled = styled.h1`
-  color: #fff;
-  font-size: 50px;
-  text-align: center;
-  display: table;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const Button = styled.button`
-  color: #f3f3f3;
-  background-color: #704d89;
-  border: none;
-  height: 30px;
-  line-height: 30px;
-  padding: 0 20px;
-  text-transform: uppercase;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 30px;
-  border-radius: 10px;
-`;
+import { darken } from "polished";
 
 export const Container = styled.div`
-  width: 100%;
-  height: 100%;
-  margin-right: 30%;
-`;
-
-export const ContainerContainer = styled.div`
-  flex-direction: column;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -40,17 +11,85 @@ export const ContainerContainer = styled.div`
   display: flex;
 `;
 
+export const H1Styled = styled.div`
+  width: 100%;
+  h1 {
+    color: #fff;
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+    display: table;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
+export const FormGroup = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  margin: 20px 0;
+`;
+
+export const Input = styled.input`
+  width: 100%;
+  height: 50px;
+  display: flex;
+  border-radius: 2px;
+  border: none;
+  padding-left: 15px;
+  font-size: 16px;
+  margin: 0 0 10px 0;
+`;
+
+export const Form = styled.form`
+  width: 100%;
+  max-width: 400px;
+`;
+
+export const FieldErrorMessage = styled.span`
+  color: red;
+  font-size: 16px;
+`;
+
+export const Button = styled.button`
+  color: #f3f3f3;
+  background-color: #704d89;
+  border: none;
+  height: 45px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 2px;
+  
+  :hover {
+    background: ${darken(0.1, "#704d89")};
+    transition: 300ms;
+  }
+`;
+
+export const BackButton = styled.button`
+  color: #f3f3f3;
+  background-color: #704d89;
+  border: none;
+  height: 50px;
+  line-height: 30px;
+  padding: 0 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 2px;
+  margin-top: 10px;
+`;
+
 export const Select = styled.select`
-  text-align: center;
-  width: 50%;
+  width: 100%;
   height: 40px;
   display: flex;
   margin-top: 10px;
-  border-radius: 10px;
+  border-radius: 2px;
   border: none;
-  :nth-child(1) {
-    margin-top: 30%;
-  }
   padding: 10px;
   text-align: center;
 
@@ -58,18 +97,4 @@ export const Select = styled.select`
     color: black;
     font-size: 20px;
   }
-`;
-
-export const Input = styled.input`
-  width: 100%;
-  height: 30px;
-  display: flex;
-  margin-top: 10px;
-  border-radius: 10px;
-  border: none;
-  :nth-child(1) {
-    margin-top: 30%;
-  }
-  padding: 10px;
-  text-align: center;
 `;
