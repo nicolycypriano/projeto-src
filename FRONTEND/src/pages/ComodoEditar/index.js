@@ -39,7 +39,6 @@ class ComodoEditar extends Component {
     api.get('/componentes')
     .then(response => {
       this.setState({ tipoComodo: response.data.tipoComodo });
-      console.log(response)
       })
       .catch(function (error) {
         console.log(error);
