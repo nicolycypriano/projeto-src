@@ -28,18 +28,13 @@ class ResidenciaEditar extends Component {
   });
 
   state = {
-    residencia: null,
-    nome: '',
-    logradouro: '',
-    numero: 0,
+    residencia: [{id: 1, nome: '', logradouro: '', numero: "0"}],
   };
 
   componentDidMount() {
-    this.setState({ residencia: this.props.match.params.id})
-
-    api.get(`/residencia/${this.state.residencia}`)
+    api.get(`/residencia/${this.props.match.params.id}`)
       .then(response => {
-        this.setState({ residencia: response.data.residencia, nome: response.data.residencia.nome, logradouro : response.data.residencia.logradouro, nuemro: response.data.residencia.numero });
+        this.setState({ residencia: response.data.residencia });
       })
       .catch(function (error) {
         console.log(error);
@@ -48,9 +43,8 @@ class ResidenciaEditar extends Component {
 
   handleSubmit = async ({ name, logradouro, numero }, { resetForm }) => {
     try {
-
       const { data } = await api
-        .post(`/residencia/edit/${this.state.residencia}`, {
+        .post(`/residencia/edit/${this.state.residencia[0].id}`, {
           nome: name,
           logradouro: logradouro,
           numero: numero,
@@ -58,6 +52,14 @@ class ResidenciaEditar extends Component {
       resetForm()
       toast.success("Residência editada com sucesso!")
       // this.props.history.push("/residencia/list");
+      
+      api.get(`/residencia/${this.props.match.params.id}`)
+      .then(response => {
+        this.setState({ residencia: response.data.residencia });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 
     } catch (err) {
       toast.error("Não foi possível editar a residência!")
@@ -74,11 +76,11 @@ class ResidenciaEditar extends Component {
         </H1Styled>
         <Formik
           initialValues={{
-            name: this.state.nome,
-            logradouro: this.state.logradouro,
-            numero: this.state.numero,
-            dono: "2"
+            name: this.state.residencia[0].nome,
+            logradouro: this.state.residencia[0].logradouro,
+            numero: this.state.residencia[0].numero,
           }}
+          enableReinitialize={true}
           onSubmit={this.handleSubmit}
         >
           {({
@@ -92,7 +94,6 @@ class ResidenciaEditar extends Component {
               <Form onSubmit={handleSubmit}>
 
                 <FormGroup>
-
                   <Input
                     name="name"
                     placeholder="Casa"
