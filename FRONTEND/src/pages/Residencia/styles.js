@@ -68,3 +68,19 @@ export const Button = styled.button`
     transition: 300ms;
   }
 `;
+
+export const BackButton = styled.button`
+  color: #f3f3f3;
+  background-color: #704d89;
+  border: none;
+  height: 50px;
+  line-height: 30px;
+  padding: 0 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 2px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+`;

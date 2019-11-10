@@ -8,6 +8,7 @@ import {
   Input,
   FormGroup,
   Form, 
+  BackButton
 } from './styles';
 import { Link } from 'react-router-dom';
 import api from '../../services/api'
@@ -22,6 +23,7 @@ class Sensor extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props)
     api.get('/componentes')
       .then(response => {
         this.setState({ tipoSensor: response.data.tipoSensor });
@@ -100,6 +102,10 @@ class Sensor extends Component {
                 <FormGroup>
                   <Button>Editar</Button>
                 </FormGroup>
+
+                <Link to={`/componentes/residencia/${this.props.match.params.idResidencia}/comodo/${this.props.match.params.idComodo}`}>
+                  <BackButton>Voltar</BackButton>
+                </Link>
               </Form>
             )}
         </Formik>

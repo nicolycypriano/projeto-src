@@ -104,7 +104,7 @@ class Componentes extends Component {
               <h2>{sensor.categoria}</h2>
               <h2>{sensor.valor}</h2>
               <button onClick={() => this.handleChecar(sensor.id)}>Checar</button>
-              <Link to={`/sensor/edit/${sensor.id}`}>
+              <Link to={`/componentes/residencia/${this.props.match.params.idResidencia}/comodo/${this.props.match.params.id}/sensor/edit/${sensor.id}`}>
                 <button>Editar</button>
               </Link>
               <button onClick={() => this.handleRemoveSensor(sensor.id)}>Remover</button>
@@ -126,7 +126,7 @@ class Componentes extends Component {
               <h2>{atuador.categoria}</h2>
               <h2>{atuador.valor ? 'Acionado' : 'Não acionado'}</h2>
               <button onClick={() => this.handleAcionar(atuador.id)}>{atuador.valor ? 'Acionar' : 'Voltar posicão padrão'}</button>
-              <Link to={`/atuador/edit/${atuador.id}`}>
+              <Link to={`/componentes/residencia/${this.props.match.params.idResidencia}/comodo/${this.props.match.params.id}/atuador/edit/${atuador.id}`}>
                 <button>Editar</button>
               </Link>
               <button onClick={() => this.handleRemoveAtuador(atuador.id)}>Remover</button>
