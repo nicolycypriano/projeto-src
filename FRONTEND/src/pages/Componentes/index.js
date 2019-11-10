@@ -68,7 +68,7 @@ class Componentes extends Component {
           list,
         };
       });
-      toast.success("Alterado valor!")
+      toast.success("Atuador movimentado!")
     })
     .catch(function (error) {
       toast.error("Não foi possível alterar o valor!")
