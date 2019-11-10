@@ -13,13 +13,14 @@ import {
 import { Link } from 'react-router-dom';
 import api from '../../services/api'
 import { Formik } from "formik";
+import { toast } from 'react-toastify';
 
 class Sensor extends Component {
 
   state = {
     tipoSensor: [],
     comodo: null,
-    sensorAtual: null
+    sensorAtual: [{id: 1, nome: ""}]
   }
 
   componentDidMount() {
@@ -49,9 +50,18 @@ class Sensor extends Component {
           tipoSensor: tipoSensor,
         })
       resetForm()
+      toast.success("Sensor editado com sucesso!")
       // this.props.history.push("/residencia/list");
 
+      api.get(`/sensor/${this.props.match.params.id}`)
+      .then(response => {
+        this.setState({ sensorAtual: response.data.sensor });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     } catch (err) {
+      toast.error("Não foi possível editar o sensor!")
       console.log(err)
     }
   }
@@ -64,9 +74,10 @@ class Sensor extends Component {
         </H1Styled>
         <Formik
           initialValues={{
-            nome: "",
+            nome: this.state.sensorAtual[0].nome,
             tipoSensor: "1",
           }}
+          enableReinitialize={true}
           onSubmit={this.handleSubmit}
         >
           {({

@@ -8,6 +8,7 @@ import {
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header'
+import { ToastContainer, toast } from 'react-toastify';
 
 class ListagemResidencia extends Component {
 
@@ -29,11 +30,14 @@ class ListagemResidencia extends Component {
     api.post(`/residencia/remove/${id}`)
     .then(response => {
         if (response.data.residencia != null) {
+          toast.success("Residência removida com sucesso!")
           let residencias = this.state.residencias.filter((residencia) => residencia.id != id);
-          this.setState({ residencias: residencias});
-        }
+          this.setState({ residencias: residencias});        
+        }        
+        toast.error(response.data)
     })
     .catch(function (error) {
+      
       console.log(error);
     });   
   }

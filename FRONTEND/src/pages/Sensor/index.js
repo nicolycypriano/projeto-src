@@ -13,6 +13,7 @@ import {
 import { Link } from 'react-router-dom';
 import api from '../../services/api'
 import { Formik } from "formik";
+import { toast } from 'react-toastify';
 
 class Sensor extends Component {
 
@@ -42,9 +43,11 @@ class Sensor extends Component {
           comodo: this.state.comodo
         })
       resetForm()
+      toast.success("Sensor criado com sucesso!")
       // this.props.history.push("/residencia/list");
 
     } catch (err) {
+      toast.error("Não foi possível criar um sensor!")
       console.log(err)
     }
   }
