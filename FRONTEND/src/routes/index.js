@@ -32,8 +32,8 @@ export default function Routes() {
       <Route path="/residencia/list" exact component={ListagemResidencia} />
       <Route path="/residencia/edit/:id" exact component={ResidenciaEditar} />     
       <Route path="/residencia" exact component={Residencia} />
-      <Route path="/sensor/edit/:id" exact component={SensorEditar} />
-      <Route path="/atuador/edit/:id" exact component={AtuadorEditar} />
+      <Route path="/componentes/residencia/:idResidencia/comodo/:idComodo/sensor/edit/:id" exact component={SensorEditar} />
+      <Route path="/componentes/residencia/:idResidencia/comodo/:idComodo/atuador/edit/:id" exact component={AtuadorEditar} />
       <Route path="/comodo/list/:id" exact component={ComodoList} />
       <Route path="/componentes/residencia/:idResidencia/comodo/:id" exact component={Componentes} />
       <Route path="/casa" exact component={Casa} />
