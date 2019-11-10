@@ -60,12 +60,12 @@ class ComodoList extends Component {
   handleRemove = (id) => {
     api.post(`/comodo/remove/${id}`)
     .then(response => {
+          toast.success("Cômodo removido com sucesso!")
           let comodos = this.state.comodos.filter((comodo) => comodo.id != id);
-          this.setState({ comodos: comodos});
-        
+          this.setState({ comodos: comodos});          
     })
     .catch(function (error) {
-      console.log(error);
+      toast.error("Não foi possível remover o cômodo!")
     });   
   }
 

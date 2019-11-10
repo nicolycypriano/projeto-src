@@ -13,6 +13,7 @@ import {
 import { Link } from 'react-router-dom';
 import api from '../../services/api'
 import { Formik } from "formik";
+import { toast } from 'react-toastify';
 
 class Atuador extends Component {
 
@@ -43,8 +44,9 @@ class Atuador extends Component {
           comodo: this.state.comodo
         })
       resetForm()
-
+      toast.success("Atuador criado com sucesso!")
     } catch (err) {
+      toast.error("Não foi possível criar um atuador!")
       console.log(err)
     }
   }

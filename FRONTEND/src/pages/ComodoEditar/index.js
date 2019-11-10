@@ -53,9 +53,10 @@ class ComodoEditar extends Component {
           tipoComodo: tipoComodo,
         })
       resetForm()
-      // this.props.history.push("/residencia/list");
-
+      toast.success("Cômodo editado com sucesso!")
+      // this.props.history.push("/residencia/list");    
     } catch (err) {
+      toast.error("Não foi possível editar o cômodo!")
       console.log(err)
     }
 

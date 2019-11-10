@@ -12,6 +12,7 @@ import {
 import { Link } from 'react-router-dom';
 import api from '../../services/api'
 import { Formik } from "formik";
+import { toast } from 'react-toastify';
 
 class Atuador extends Component {
 
@@ -49,9 +50,11 @@ class Atuador extends Component {
           tipoAtuador: tipoAtuador,
         })
       resetForm()
+      toast.success("Atuador editado com sucesso!")
       // this.props.history.push("/residencia/list");
 
     } catch (err) {
+      toast.error("Não foi possível editar o atuador!")
       console.log(err)
     }
   }

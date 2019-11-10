@@ -8,6 +8,7 @@ import {
 } from './styles';
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 class Componentes extends Component {
 
@@ -43,8 +44,10 @@ class Componentes extends Component {
           list,
         };
       });
+      toast.success("Valor alterado!")
     })
     .catch(function (error) {
+      toast.error("Não foi possível alterar o valor!")
       console.log(error);
     });   
   }
@@ -65,8 +68,10 @@ class Componentes extends Component {
           list,
         };
       });
+      toast.success("Alterado valor!")
     })
     .catch(function (error) {
+      toast.error("Não foi possível alterar o valor!")
       console.log(error);
     });   
   }
@@ -76,8 +81,10 @@ class Componentes extends Component {
     .then(response => {
         let sensores = this.state.sensores.filter((sensor) => sensor.id != id);
         this.setState({ sensores: sensores});
+        toast.success("Sensor removido com sucesso!")
     })
     .catch(function (error) {
+      toast.success("Não foi possível remover o sensor!")
       console.log(error);
     });   
   }
@@ -87,8 +94,10 @@ class Componentes extends Component {
     .then(response => {
         let atuadores = this.state.atuadores.filter((atuador) => atuador.id != id);
         this.setState({ atuadores: atuadores});
+        toast.success("Atuador removido com sucesso!")
     })
     .catch(function (error) {
+      toast.success("Não foi possível remover o atuador!")
       console.log(error);
     });   
   }
@@ -125,7 +134,7 @@ class Componentes extends Component {
               <h2>{atuador.nome}</h2>
               <h2>{atuador.categoria}</h2>
               <h2>{atuador.valor ? 'Acionado' : 'Não acionado'}</h2>
-              <button onClick={() => this.handleAcionar(atuador.id)}>{atuador.valor ? 'Acionar' : 'Voltar posicão padrão'}</button>
+              <button onClick={() => this.handleAcionar(atuador.id)}>{atuador.valor ? 'Voltar posicão' : 'Acionar' }</button>
               <Link to={`/atuador/edit/${atuador.id}`}>
                 <button>Editar</button>
               </Link>

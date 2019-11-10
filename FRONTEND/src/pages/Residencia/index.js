@@ -47,9 +47,11 @@ class Main extends Component {
           numero: numero,
         })
       resetForm()
+      toast.success("Residência criada com sucesso!")
       // this.props.history.push("/residencia/list");
 
     } catch (err) {
+      toast.error("Não foi possível criar uma residência!")
       console.log(err)
     }
 
@@ -57,13 +59,6 @@ class Main extends Component {
 
 
   render() {
-    const ResidenciaSchema = Yup.object().shape({
-      name: Yup.string().required("Nome é obrigatório"),
-      logradouro: Yup.string()
-        .required("Logradouro é obrigatório").max(10, "Máximo 10 caracteres"),
-      numero: Yup.string()
-        .required("Número é obrigatória").min(2, "No mínimo 2 caracteres"),
-    });
     const { redirect } = this.state;
 
     if (redirect) {
@@ -82,7 +77,6 @@ class Main extends Component {
             numero: "",
             dono: "2"
           }}
-          validationSchema={ResidenciaSchema}
           onSubmit={this.handleSubmit}
         >
           {({

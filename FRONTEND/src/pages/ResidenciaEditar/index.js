@@ -56,9 +56,11 @@ class ResidenciaEditar extends Component {
           numero: numero,
         })
       resetForm()
+      toast.success("Residência editada com sucesso!")
       // this.props.history.push("/residencia/list");
 
     } catch (err) {
+      toast.error("Não foi possível editar a residência!")
       console.log(err)
     }
 

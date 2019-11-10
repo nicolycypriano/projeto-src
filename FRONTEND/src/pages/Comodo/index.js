@@ -54,9 +54,11 @@ class Comodo extends Component {
           tipoComodo: tipoComodo,
         })
       resetForm()
+      toast.success("Cômodo criado com sucesso!")
       // this.props.history.push("/residencia/list");
 
     } catch (err) {
+      toast.error("Não foi possível criar o cômodo!")
       console.log(err)
     }
   }

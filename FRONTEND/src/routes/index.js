@@ -9,7 +9,6 @@ import Residencia from '../pages/Residencia';
 import Comodo from '../pages/Comodo';
 import Atuador from '../pages/Atuador';
 import Sensor from '../pages/Sensor';
-import Casa from '../pages/Casa';
 import Profile from '../pages/Profile';
 import ListagemResidencia from '../pages/ListagemResidencia';
 import ComodoList from '~/pages/ComodoList';
@@ -36,7 +35,6 @@ export default function Routes() {
       <Route path="/atuador/edit/:id" exact component={AtuadorEditar} />
       <Route path="/comodo/list/:id" exact component={ComodoList} />
       <Route path="/componentes/residencia/:idResidencia/comodo/:id" exact component={Componentes} />
-      <Route path="/casa" exact component={Casa} />
       <Route path="/register" exact component={SignUp} />
     </Switch>
   );
