@@ -8,6 +8,7 @@ import {
   Input,
   FormGroup,
   Form, 
+  BackButton
 } from './styles';
 import { Link } from 'react-router-dom';
 import api from '../../services/api'
@@ -102,6 +103,11 @@ class Atuador extends Component {
                 <FormGroup>
                   <Button>Editar</Button>
                 </FormGroup>
+
+                <Link to={`/componentes/residencia/${this.props.match.params.idResidencia}/comodo/${this.props.match.params.idComodo}`}>
+                  <BackButton>Voltar</BackButton>
+                </Link>
+
               </Form>
             )}
         </Formik>
