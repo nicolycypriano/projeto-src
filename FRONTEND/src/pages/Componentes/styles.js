@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { darken } from "polished";
+
 
 export const Content = styled.div`
   width: 100%;
@@ -33,8 +35,14 @@ export const Content = styled.div`
         padding: 10px;
         margin: 10px 0 0 0;
         border: none;
-        background: #7159c1;
+        background: #C99AD0;
         width: 100%;
+
+        :hover{
+          background-image: linear-gradient(#C99AE9, #C99AD0) ;
+          transition: .10s;
+          color: #fff;
+        }
       }
     }
   }
@@ -59,6 +67,11 @@ export const Button = styled.button`
   cursor: pointer;
   border-radius: 2px;
   width: 100%;
+
+  :hover {
+    background: ${darken(0.1, "#704d89")};
+    transition: 300ms;
+  }
 `;
 
 
@@ -112,5 +125,12 @@ export const BackButton = styled.button`
   border-radius: 2px;
   margin-top: 10px;
   margin-bottom: 10px;
+
+
+
+:hover {
+    background: ${darken(0.1, "#704d89")};
+    transition: 300ms;
+  }
 `;
 

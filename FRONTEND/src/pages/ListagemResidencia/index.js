@@ -47,16 +47,15 @@ class ListagemResidencia extends Component {
   render() {
     return (
       <>
-      <Header />
       <Content>
-        <H1Styled>Residências</H1Styled>
+        <H1Styled>Suas residências</H1Styled>
         <ul>
           {this.state.residencias.map((residencia) =>
             <li key={residencia.id}>
               <Link to={`/comodo/list/${residencia.id}`}>
-                <h2>{residencia.nome}</h2>
-                <h2>{residencia.logradouro}</h2>
-                <h2>{residencia.numero}</h2>
+                <p>Nome: </p><h2>{residencia.nome}</h2><br></br>
+                <p>Logradouro:</p><h2>{residencia.logradouro}</h2><br></br>
+                <p>Número:</p><h2>{residencia.numero}</h2><br></br>
               </Link>
               <Link to={`/residencia/edit/${residencia.id}`}>
                 <button>Editar</button>
@@ -69,6 +68,9 @@ class ListagemResidencia extends Component {
 
           <Link to="/residencia">
             <Button>Cadastrar nova residência</Button>
+          </Link>
+          <Link to="/">
+            <Button>Sair</Button>
           </Link>
         </ul>
       </Content>

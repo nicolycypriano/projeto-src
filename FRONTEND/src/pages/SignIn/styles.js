@@ -1,9 +1,29 @@
-import styled from 'styled-components';
+import styled, { injectGlobal } from 'styled-components';
+import back from '../../assets/bg-01.jpg'
+
+
+export const H1 = styled.h1`
+  color: #fff;
+  font-size: 50px;
+  margin-bottom: 60px;
+  margin-top: 40px;
+  text-align: center;
+  font-weight: lighter;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding: 20px;
+`;
 
 export const Img = styled.img`
   width: 100px;
   height: 100px;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
+  margin: 5px;
+`;
+
+export const Box = styled.div`
+  width: 300px;
+  height: 200px;
+  background-color: #fff;
 `;
 
 export const Container = styled.div`
@@ -17,35 +37,35 @@ export const Container = styled.div`
   font-size: 15px;
 
   button {
-    border-radius: 2px;
-    background: #222;
-    color: #fff;
-    padding: 10px;
-    margin: 10px 0 0 0;
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 50%;
+    color: #8459A1;
     border: none;
-    background: rgb(113, 52, 161);
     margin-bottom: 10px;
+
+    :hover{
+      background-position: right center;
+      background-image: linear-gradient(to right, #C4A9e4, #C4A9C4 );
+      box-shadow: 0 4px 15px 0 rgba(126, 52, 161, 0.75);
+      color: #fff;
+      font-weight: bold;
+      transition: .5s;
+    }
   }
 
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-
-  input {
-    width: 100%;
-    height: 30px;
-    display: flex;
-    border-radius: 2px;
-    border: none;
-    padding-left: 15px;
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
+  
 `;
 
 export const ContainerForm = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+`;
+
+export const Body = styled.div`
+  width: 100%;
+  background-image: url(${back});
+  opacity: 0.6;
 `;

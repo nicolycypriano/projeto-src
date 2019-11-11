@@ -92,4 +92,10 @@ export const BackButton = styled.button`
   font-weight: bold;
   cursor: pointer;
   border-radius: 2px;
+  width: 100%;
+
+  :hover {
+    background: ${darken(0.1, "#704d89")};
+    transition: 300ms;
+  }
 `;

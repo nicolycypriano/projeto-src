@@ -1,5 +1,4 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -7,46 +6,43 @@ import { Formik } from 'formik';
 import { signInRequest } from '~/store/modules/auth/actions';
 
 import logo from '../../assets/logo.svg';
-import { Img, ContainerBloco, ContainerForm } from './styles';
+import { Img, ContainerBloco, ContainerForm, H1, Body } from './styles';
 import { Container } from './styles';
+import { Box } from '~/components/Header/styles';
 
-const schema = Yup.object().shape({
-  email: Yup.string()
-    .email('Email inválido!')
-    .required('E-mail é obrigatório'),
-  password: Yup.string().required('A senha é obrigatória.')
-});
+// const schema = Yup.object().shape({
+//   email: Yup.string()
+//     .email('Email inválido!')
+//     .required('E-mail é obrigatório'),
+//   password: Yup.string().required('A senha é obrigatória.')
+// });
 
-export default function SignIn() {
-  const dispatch = useDispatch();
-  const loading = useSelector(state => state.auth.loading);
+// export default function SignIn() {
+//   const dispatch = useDispatch();
+//   const loading = useSelector(state => state.auth.loading);
 
-  function handleSubmit({ email, password }) {
-    dispatch(signInRequest(email, password));
-  }
+//   function handleSubmit({ email, password }) {
+//     dispatch(signInRequest(email, password));
+//   }
 
+class SignIn extends Component {
+  render() {
   return (
     <>
+      <Body>
+      </Body>
+
+
       <Container>
         <Img src={logo} alt="SRC" />
-
-        <ContainerForm>
-          <form schema={schema} onSubmit={handleSubmit}>
-            <input name="email" type="email" placeholder="Insira seu e-mail" />
-            <br />
-            <input
-              name="password"
-              type="password"
-              placeholder="Insira sua senha"
-            />
-
-            <button type="submit">
-              {loading ? 'Carregando...' : 'Acessar'}
-            </button>
-            <Link to="/register">Criar conta gratuita</Link>
-          </form>
-        </ContainerForm>
+        <H1>Sistema Residencial de Controle e Monitoramento</H1>
+          <Link to='/residencia/list'>
+            <button>Acessar</button>
+          </Link>
       </Container>
     </>
   );
+  }
 }
+
+export default SignIn;

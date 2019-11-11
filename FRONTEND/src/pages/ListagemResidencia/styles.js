@@ -33,8 +33,14 @@ export const Content = styled.div`
         padding: 10px;
         margin: 10px 0 0 0;
         border: none;
-        background: #7159c1;
+        background: #C99AD0;
         width: 100%;
+
+        :hover{
+          background-image: linear-gradient(#C99AE9, #C99AD0) ;
+          transition: .10s;
+          color: #fff;
+        }
       }
     }
   }
@@ -59,6 +65,12 @@ export const Button = styled.button`
   cursor: pointer;
   border-radius: 2px;
   width: 100%;
+  margin-bottom: 10px;
+
+  :hover{
+          opacity: 0.8;
+          color: #fff;
+        }
 `;
 
 

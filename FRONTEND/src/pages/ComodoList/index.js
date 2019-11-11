@@ -73,7 +73,7 @@ class ComodoList extends Component {
     return (
       <>
       <Content>
-        <H1Styled>Cômodos</H1Styled>
+        <H1Styled>Seus cômodos</H1Styled>
         <ul>
           {this.state.comodos.map((comodo) =>
             <li key={comodo.id}>
