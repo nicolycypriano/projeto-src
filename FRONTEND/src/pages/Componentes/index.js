@@ -111,7 +111,11 @@ class Componentes extends Component {
             <li key={sensor.id}>
               <p>Nome:</p><h2>{sensor.nome}</h2><br></br>
               <p>Tipo de sensor:</p><h2>{sensor.categoria}</h2><br></br>
-              <p>Valor (em graus ou em medida):</p><h2>{sensor.valor}</h2>
+              <p>Valor:</p><h2>{
+                sensor.categoria == 'Temperatura' 
+                ? sensor.valor + " °C" : 
+                sensor.valor == 1 ? 'Ligado' : 'Desligado'
+              }</h2>
               <button onClick={() => this.handleChecar(sensor.id)}>Checar</button>
               <Link to={`/componentes/residencia/${this.props.match.params.idResidencia}/comodo/${this.props.match.params.id}/sensor/edit/${sensor.id}`}>
                 <button>Editar</button>
