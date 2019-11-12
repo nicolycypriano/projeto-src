@@ -19,7 +19,8 @@ class Atuador extends Component {
 
   state = {
     tipoAtuador: [],
-    comodo: null
+    comodo: null,
+    comodoTipo: null
   }
 
   componentDidMount() {
@@ -33,6 +34,14 @@ class Atuador extends Component {
       .catch(function (error) {
         console.log(error);
       });
+
+    api.get(`/comodo/${this.props.match.params.id}`)
+    .then(response => {
+      this.setState({ comodoTipo: response.data.comodo });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   handleSubmit = async ({ nome, tipoAtuador }, { resetForm }) => {
@@ -55,7 +64,7 @@ class Atuador extends Component {
     return (
       <Container>
         <H1Styled>
-          <h1>Adicionar novo atuador</h1>
+          <h1>Adicionar novo atuador {this.state.comodoTipo ? " - cômodo  " + this.state.comodoTipo[0].nome : ""}</h1>
         </H1Styled>
         <Formik
           initialValues={{

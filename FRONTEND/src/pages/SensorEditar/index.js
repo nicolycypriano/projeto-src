@@ -20,7 +20,8 @@ class Sensor extends Component {
   state = {
     tipoSensor: [],
     comodo: null,
-    sensorAtual: [{id: 1, nome: ""}]
+    sensorAtual: [{id: 1, nome: ""}],
+    comodoTipo: null
   }
 
   componentDidMount() {
@@ -36,6 +37,14 @@ class Sensor extends Component {
     api.get(`/sensor/${this.props.match.params.id}`)
     .then(response => {
       this.setState({ sensorAtual: response.data.sensor });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    
+    api.get(`/comodo/${this.props.match.params.idComodo}`)
+    .then(response => {
+      this.setState({ comodoTipo: response.data.comodo });
     })
     .catch(function (error) {
       console.log(error);
@@ -70,7 +79,7 @@ class Sensor extends Component {
     return (
       <Container>
         <H1Styled>
-          <h1>Editar sensor</h1>
+          <h1>Editar sensor {this.state.comodoTipo ? " - cômodo " + this.state.comodoTipo[0].nome : ""}</h1>
         </H1Styled>
         <Formik
           initialValues={{

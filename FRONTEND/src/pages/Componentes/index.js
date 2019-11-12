@@ -14,7 +14,8 @@ class Componentes extends Component {
 
   state = {
     sensores: [],
-    atuadores: []
+    atuadores: [],
+    comodo: null
   }
 
   componentDidMount() {
@@ -26,6 +27,14 @@ class Componentes extends Component {
       .catch(function (error) {
         console.log(error);
       });
+
+    api.get(`/comodo/${this.props.match.params.id}`)
+    .then(response => {
+      this.setState({ comodo: response.data.comodo });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   handleChecar = (id) => {
@@ -105,7 +114,7 @@ class Componentes extends Component {
   render() {
     return (
       <Content>
-        <H1Styled>Sensores</H1Styled>
+        <H1Styled>Sensores {this.state.comodo ? " - cômodo " + this.state.comodo[0].nome: ""}</H1Styled>
         <ul>
           {this.state.sensores.map((sensor) =>
             <li key={sensor.id}>
@@ -131,7 +140,7 @@ class Componentes extends Component {
           </Link>
         </ul>
 
-        <H1Styled>Atuadores</H1Styled>
+        <H1Styled>Atuadores {this.state.comodo ? " - cômodo " + this.state.comodo[0].nome: ""}</H1Styled>
         <ul>
           {this.state.atuadores.map((atuador) =>
             <li key={atuador.id}>
