@@ -24,6 +24,7 @@ class Sensor extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props)
     this.setState({ comodo: this.props.match.params.id})
 
     api.get('/componentes')
@@ -110,7 +111,7 @@ class Sensor extends Component {
               </Form>
             )}
         </Formik>
-                  <Link to={`/componentes/residencia/${this.props.match.params.idResidencia}/comodo/${this.props.match.params.id}`}>
+                  <Link to={`/componentes/residencia/${this.props.match.params.idResidencia}/comodo/${this.props.match.params.idComodo}`}>
                     <BackButton>Voltar</BackButton>
                   </Link>
       </Container>

@@ -126,7 +126,7 @@ class Componentes extends Component {
                 sensor.valor == 1 ? 'Ligado' : 'Desligado'
               }</h2>
               <button onClick={() => this.handleChecar(sensor.id)}>Checar</button>
-              <Link to={`/componentes/residencia/${this.props.match.params.idResidencia}/comodo/${this.props.match.params.id}/sensor/edit/${sensor.id}`}>
+              <Link to={`/componentes/residencia/${this.props.match.params.idResidencia}/comodo/${this.props.match.params.idComodo}/sensor/edit/${sensor.id}`}>
                 <button>Editar</button>
               </Link>
               <button onClick={() => this.handleRemoveSensor(sensor.id)}>Remover</button>
@@ -135,7 +135,7 @@ class Componentes extends Component {
             ||
             <li>Nenhuma sensor cadastrado!</li>}
 
-          <Link to={`/residencia/${this.props.match.params.idResidencia}/comodo/${this.props.match.params.id}/sensor`}>
+          <Link to={`/residencia/${this.props.match.params.idResidencia}/comodo/${this.props.match.params.idComodo}/sensor`}>
             <Button>Cadastrar novo sensor</Button>
           </Link>
         </ul>
@@ -157,7 +157,7 @@ class Componentes extends Component {
             ||
             <li>Nenhum atuador cadastrado!</li>}
           
-          <Link to={`/residencia/${this.props.match.params.idResidencia}/comodo/${this.props.match.params.id}/atuador`}>
+          <Link to={`/residencia/${this.props.match.params.idResidencia}/comodo/${this.props.match.params.idComodo}/atuador`}>
             <Button>Cadastrar novo atuador</Button>
           </Link>
         </ul>

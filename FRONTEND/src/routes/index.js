@@ -34,7 +34,7 @@ export default function Routes() {
       <Route path="/componentes/residencia/:idResidencia/comodo/:idComodo/sensor/edit/:id" exact component={SensorEditar} />
       <Route path="/componentes/residencia/:idResidencia/comodo/:idComodo/atuador/edit/:id" exact component={AtuadorEditar} />
       <Route path="/comodo/list/:id" exact component={ComodoList} />
-      <Route path="/componentes/residencia/:idResidencia/comodo/:idComodo" exact component={Componentes} />
+      <Route path="/componentes/residencia/:idResidencia/comodo/:id" exact component={Componentes} />
       <Route path="/register" exact component={SignUp} />
     </Switch>
   );
