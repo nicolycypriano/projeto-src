@@ -14,6 +14,8 @@ import { Link } from 'react-router-dom';
 import api from '../../services/api'
 import { Formik } from "formik";
 import { toast } from 'react-toastify';
+import Loading from '../../components/Loading/loading'
+
 
 class Atuador extends Component {
 
@@ -21,13 +23,19 @@ class Atuador extends Component {
     tipoAtuador: [],
     comodo: null,
     atuadorAtual: null,
-    comodoTipo: null
+    comodoTipo: null,
+    loading: false
+
   }
 
   componentDidMount() {
+    this.setState({ loading: true })
+
     api.get('/componentes')
     .then(response => {
       this.setState({ tipoAtuador: response.data.tipoAtuador });
+      this.setState({ loading: false })
+
     })
     .catch(function (error) {
       console.log(error);
@@ -36,7 +44,6 @@ class Atuador extends Component {
     api.get(`/atuador/${this.props.match.params.id}`)
     .then(response => {
       this.setState({ atuadorAtual: response.data.atuador });
-      console.log(response.data)
     })
     .catch(function (error) {
       console.log(error);
@@ -44,6 +51,7 @@ class Atuador extends Component {
 
     api.get(`/comodo/${this.props.match.params.idComodo}`)
     .then(response => {
+      console.log(response)
       this.setState({ comodoTipo: response.data.comodo });
     })
     .catch(function (error) {
@@ -70,10 +78,16 @@ class Atuador extends Component {
   }
 
   render() {
+    const { loading } = this.state
+
     return (
       <Container>
+        <Loading loading={loading} />
+      <br></br>
+      <br></br>
+      <br></br>
         <H1Styled>
-          <h1>Editar atuador {this.state.comodoTipo ? " - cômodo " + this.state.comodoTipo[0].nome : ""}</h1>
+          <h1> {this.state.comodoTipo ? " Editar atuador do cômodo " + this.state.comodoTipo[0].nome : ""}</h1>
         </H1Styled>
         <Formik
           initialValues={{

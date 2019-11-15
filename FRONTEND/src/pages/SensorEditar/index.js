@@ -14,6 +14,8 @@ import { Link } from 'react-router-dom';
 import api from '../../services/api'
 import { Formik } from "formik";
 import { toast } from 'react-toastify';
+import Loading from '../../components/Loading/loading'
+
 
 class Sensor extends Component {
 
@@ -21,14 +23,20 @@ class Sensor extends Component {
     tipoSensor: [],
     comodo: null,
     sensorAtual: [{id: 1, nome: ""}],
-    comodoTipo: null
+    comodoTipo: null,
+    loading: false
+
   }
 
   componentDidMount() {
+    this.setState({ loading: true })
+
     console.log(this.props)
     api.get('/componentes')
       .then(response => {
         this.setState({ tipoSensor: response.data.tipoSensor });
+        this.setState({ loading: false })
+
       })
       .catch(function (error) {
         console.log(error);
@@ -44,6 +52,7 @@ class Sensor extends Component {
     
     api.get(`/comodo/${this.props.match.params.idComodo}`)
     .then(response => {
+      console.log(response)
       this.setState({ comodoTipo: response.data.comodo });
     })
     .catch(function (error) {
@@ -76,10 +85,16 @@ class Sensor extends Component {
   }
 
   render() {
+    const { loading } = this.state
+
     return (
       <Container>
+        <Loading loading={loading} />
+      <br></br>
+      <br></br>
+      <br></br>
         <H1Styled>
-          <h1>Editar sensor {this.state.comodoTipo ? " - cômodo " + this.state.comodoTipo[0].nome : ""}</h1>
+          <h1> {this.state.comodoTipo ? " Editar sensor do cômodo " + this.state.comodoTipo[0].nome : ""}</h1>
         </H1Styled>
         <Formik
           initialValues={{

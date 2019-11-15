@@ -109,7 +109,7 @@ class Atuador extends Component {
               </Form>
             )}
         </Formik>
-                  <Link to={`/componentes/residencia/${this.props.match.params.idResidencia}/comodo/${this.props.match.params.id}`}>
+                  <Link to={`/componentes/residencia/${this.props.match.params.idResidencia}/comodo/${this.props.match.params.idComodo}`}>
                     <BackButton>Voltar</BackButton>
                   </Link>
 

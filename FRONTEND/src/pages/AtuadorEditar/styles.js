@@ -91,4 +91,5 @@ export const BackButton = styled.button`
   font-weight: bold;
   cursor: pointer;
   border-radius: 2px;
+  width: 100%;
 `;

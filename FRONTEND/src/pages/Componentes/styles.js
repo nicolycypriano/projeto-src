@@ -9,7 +9,7 @@ export const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
+  margin: 10px;
 
   ul {
     width: 100%;
@@ -19,6 +19,7 @@ export const Content = styled.div`
       background: #fff;
       padding: 10px;
       width: 100%;
+      height: 325px;
       margin: 0 0 10px 0;
       display: flex;
       flex-direction: column;
@@ -48,11 +49,19 @@ export const Content = styled.div`
   }
 `;
 
-export const H1Styled = styled.h1`
+export const H1Styled = styled.h2`
   color: #fff;
-  font-size: 50px;
+  font-size: 30px;
   text-align: center;
-  margin: 10px 0 10px 0;
+  margin: 10px;
+`;
+
+export const H1Styled2 = styled.h2`
+  color: #fff;
+  font-size: 30px;
+  text-align: center;
+  margin: 10px;
+  margin-top: -40px;
 `;
 
 export const Button = styled.button`
@@ -67,6 +76,7 @@ export const Button = styled.button`
   cursor: pointer;
   border-radius: 2px;
   width: 100%;
+  margin-bottom: 10px;
 
   :hover {
     background: ${darken(0.1, "#704d89")};
@@ -108,24 +118,27 @@ export const Container = styled.div`
 
 `;
 
-export const ContainerContainer = styled.div`
-  display: flex;
+export const Content2 = styled.div`
 `;
 
 export const BackButton = styled.button`
+  font-size: 8px;
   color: #f3f3f3;
   background-color: #704d89;
   border: none;
-  height: 50px;
-  line-height: 30px;
-  padding: 0 20px;
+  padding: 10px;
   text-transform: uppercase;
   font-weight: bold;
   cursor: pointer;
-  border-radius: 2px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  border-radius: 50%;
+  margin: 10px;
+  width: 30px;
+  height: 30px;
 
+  img {
+    width: 8px;
+    height: 8px;
+  }
 
 
 :hover {

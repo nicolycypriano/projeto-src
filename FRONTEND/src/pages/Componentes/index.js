@@ -4,12 +4,15 @@ import {
   Select,
   Button,
   Content,
-  BackButton
+  BackButton,
+  Content2,
+  H1Styled2
 } from './styles';
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Loading from '../../components/Loading/loading'
+import Back from '../../assets/back.svg'
 
 
 class Componentes extends Component {
@@ -123,12 +126,17 @@ class Componentes extends Component {
     const { loading } = this.state
 
     return (
+      <>
+
+        <Link to={`/comodo/list/${this.props.match.params.idResidencia}`}>
+          <BackButton>
+            <img src={Back}></img>
+          </BackButton>
+        </Link>
       <Content>
         <Loading loading={loading} />
-        <br/>
-        <br/>
-        <br/>
-        <H1Styled>Sensores {this.state.comodo ? " - cômodo " + this.state.comodo[0].nome: ""}</H1Styled>
+
+        <H1Styled> {this.state.comodo ? "Sensores do cômodo " + this.state.comodo[0].nome: ""}</H1Styled>
         <ul>
           {this.state.sensores.map((sensor) =>
             <li key={sensor.id}>
@@ -138,7 +146,7 @@ class Componentes extends Component {
                 sensor.categoria == 'Temperatura' 
                 ? sensor.valor + " °C" : 
                 sensor.valor == 1 ? 'Ligado' : 'Desligado'
-              }</h2>
+              }</h2><br></br>
               <button onClick={() => this.handleChecar(sensor.id)}>
                 {sensor.categoria == 'Abertura' || sensor.categoria == 'Presença' ? 'Ligar/Desligar' 
                                                                     : 'Verificar temperatura'} 
@@ -156,8 +164,10 @@ class Componentes extends Component {
             <Button>Cadastrar novo sensor</Button>
           </Link>
         </ul>
-
-        <H1Styled>Atuadores {this.state.comodo ? " - cômodo " + this.state.comodo[0].nome: ""}</H1Styled>
+        </Content>
+        
+        <Content>
+        <H1Styled> {this.state.comodo ? " Atuadores do cômodo " + this.state.comodo[0].nome: ""}</H1Styled>
         <ul>
           {this.state.atuadores.map((atuador) =>
             <li key={atuador.id}>
@@ -165,7 +175,7 @@ class Componentes extends Component {
               <p>Tipo de atuador: </p><h2>{atuador.categoria}</h2><br></br>
               <p>Valor (acionado ou desacionado):</p><h2>{atuador.valor ? 'Acionado' : 'Não acionado'}</h2><br></br>
               <button onClick={() => this.handleAcionar(atuador.id)}>{atuador.valor ? 'Voltar posicão' : 'Acionar' }</button>
-              <Link to={`/componentes/residencia/${this.props.match.params.idResidencia}/comodo/${this.props.match.params.id}/atuador/edit/${atuador.id}`}>
+              <Link to={`/componentes/residencia/${this.props.match.params.idResidencia}/comodo/${this.props.match.params.idComodo}/atuador/edit/${atuador.id}`}>
                 <button>Editar</button>
               </Link>
               <button onClick={() => this.handleRemoveAtuador(atuador.id)}>Remover</button>
@@ -179,10 +189,9 @@ class Componentes extends Component {
           </Link>
         </ul>
 
-        <Link to={`/comodo/list/${this.props.match.params.idResidencia}`}>
-          <BackButton>Voltar</BackButton>
-        </Link>
       </Content>
+      
+      </>
     );
   }
 }
