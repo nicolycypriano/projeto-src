@@ -9,17 +9,22 @@ import api from '../../services/api';
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header'
 import { ToastContainer, toast } from 'react-toastify';
+import Loading from '../../components/Loading/loading'
 
 class ListagemResidencia extends Component {
 
   state = {
-    residencias: []
+    residencias: [],
+    loading: false
   }
 
   componentDidMount() {
+    this.setState({ loading: true })
+
     api.get('/componentes/residencia')
       .then(response => {
         this.setState({ residencias: response.data.residencias });
+        this.setState({ loading: false })
       })
       .catch(function (error) {
         console.log(error);
@@ -45,9 +50,15 @@ class ListagemResidencia extends Component {
   }
 
   render() {
+    const { loading } = this.state
+
     return (
       <>
       <Content>
+      <Loading loading={loading} />
+      <br></br>
+      <br></br>
+      <br></br>
         <H1Styled>Suas residências</H1Styled>
         <ul>
           {this.state.residencias.map((residencia) =>

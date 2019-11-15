@@ -9,26 +9,34 @@ import {
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Loading from '../../components/Loading/loading'
+
 
 class Componentes extends Component {
 
   state = {
     sensores: [],
     atuadores: [],
-    comodo: null
+    comodo: null,
+    loading: false
+
   }
 
   componentDidMount() {
+    this.setState({ loading: true })
+
     console.log(this.props)
-    api.get(`/componentes/comodo/${this.props.match.params.id}`)
+    api.get(`/componentes/comodo/${this.props.match.params.idComodo}`)
       .then(response => {
         this.setState({ sensores: response.data.sensores, atuadores: response.data.atuadores });
+        this.setState({ loading: false })
+
       })
       .catch(function (error) {
         console.log(error);
       });
 
-    api.get(`/comodo/${this.props.match.params.id}`)
+    api.get(`/comodo/${this.props.match.params.idComodo}`)
     .then(response => {
       this.setState({ comodo: response.data.comodo });
     })
@@ -112,8 +120,14 @@ class Componentes extends Component {
   }
 
   render() {
+    const { loading } = this.state
+
     return (
       <Content>
+        <Loading loading={loading} />
+        <br/>
+        <br/>
+        <br/>
         <H1Styled>Sensores {this.state.comodo ? " - cômodo " + this.state.comodo[0].nome: ""}</H1Styled>
         <ul>
           {this.state.sensores.map((sensor) =>
@@ -125,7 +139,10 @@ class Componentes extends Component {
                 ? sensor.valor + " °C" : 
                 sensor.valor == 1 ? 'Ligado' : 'Desligado'
               }</h2>
-              <button onClick={() => this.handleChecar(sensor.id)}>Checar</button>
+              <button onClick={() => this.handleChecar(sensor.id)}>
+                {sensor.categoria == 'Abertura' || sensor.categoria == 'Presença' ? 'Ligar/Desligar' 
+                                                                    : 'Verificar temperatura'} 
+              </button>
               <Link to={`/componentes/residencia/${this.props.match.params.idResidencia}/comodo/${this.props.match.params.idComodo}/sensor/edit/${sensor.id}`}>
                 <button>Editar</button>
               </Link>

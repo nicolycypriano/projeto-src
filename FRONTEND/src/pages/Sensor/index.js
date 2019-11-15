@@ -25,7 +25,7 @@ class Sensor extends Component {
 
   componentDidMount() {
     console.log(this.props)
-    this.setState({ comodo: this.props.match.params.id})
+    this.setState({ comodo: this.props.match.params.idComodo})
 
     api.get('/componentes')
       .then(response => {

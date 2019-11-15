@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import Loading from '../../components/Loading/loading'
 
 import api from '../../services/api';
 import { ToastContainer, toast } from 'react-toastify';
@@ -8,7 +9,8 @@ import {
   Button,
   H1Styled,
   Content,
-  BackButton
+  BackButton,
+  Div
 } from './styles';
 
 class ComodoList extends Component {
@@ -25,16 +27,19 @@ class ComodoList extends Component {
 
   state = {
     comodos: [],
-    idSensor: null
+    idSensor: null,
+    loading: false
   };
 
   componentDidMount() {
+    this.setState({ loading: true })
     api.get(`/componentes/comodo/residencia/${this.props.match.params.id}`)
     .then(response => {
       this.setState({
         comodos: response.data.comodos,
         idSensor: response.data.comodos.idSensor
       });
+      this.setState({ loading: false })
     })
       .catch(function(error) {
         console.log(error);
@@ -70,9 +75,19 @@ class ComodoList extends Component {
   }
 
   render() {
+
+    const { loading } = this.state
+
+
     return (
       <>
       <Content>
+        <Div>
+          <Loading loading={loading} />
+        </Div>
+        <br />
+        <br />
+        <br />
         <H1Styled>Seus cômodos</H1Styled>
         <ul>
           {this.state.comodos.map((comodo) =>

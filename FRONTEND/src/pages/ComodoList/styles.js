@@ -187,3 +187,7 @@ export const BackButton = styled.button`
     transition: 300ms;
   }
 `;
+
+export const Div = styled.div`
+  color: #fff;
+`;
