@@ -135,6 +135,7 @@ class Componentes extends Component {
         </Link>
       <Content>
         <Loading loading={loading} />
+        <br></br>
 
         <H1Styled> {this.state.comodo ? "Sensores do cômodo " + this.state.comodo[0].nome: ""}</H1Styled>
         <ul>
@@ -167,6 +168,8 @@ class Componentes extends Component {
         </Content>
         
         <Content>
+        <Loading loading={loading} />
+        <br></br>
         <H1Styled> {this.state.comodo ? " Atuadores do cômodo " + this.state.comodo[0].nome: ""}</H1Styled>
         <ul>
           {this.state.atuadores.map((atuador) =>
