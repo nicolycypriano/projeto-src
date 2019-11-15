@@ -80,6 +80,9 @@ class ComodoList extends Component {
               <Link to={`/componentes/residencia/${this.props.match.params.id}/comodo/${comodo.id}`}>
                 <h2>{comodo.nome}</h2>
               </Link>
+              <Link to={`/componentes/residencia/${this.props.match.params.id}/comodo/${comodo.id}`}>
+                <button>Visualizar atuadores e sensores</button>
+              </Link>
               <Link to={`/comodo/edit/${comodo.id}`}>
                 <button>Editar</button>
               </Link>
