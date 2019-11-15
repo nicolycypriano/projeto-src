@@ -57,6 +57,9 @@ class ListagemResidencia extends Component {
                 <p>Logradouro:</p><h2>{residencia.logradouro}</h2><br></br>
                 <p>Número:</p><h2>{residencia.numero}</h2><br></br>
               </Link>
+              <Link to={`/comodo/list/${residencia.id}`}>
+                <button>Visualizar cõmodos</button>
+              </Link>
               <Link to={`/residencia/edit/${residencia.id}`}>
                 <button>Editar</button>
               </Link>
