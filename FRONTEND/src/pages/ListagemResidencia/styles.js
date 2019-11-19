@@ -8,6 +8,7 @@ export const Content = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+  
 
   ul {
     width: 100%;
