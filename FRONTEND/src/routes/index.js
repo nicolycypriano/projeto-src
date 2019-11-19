@@ -1,6 +1,7 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
-import Route from './Route';
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+
+import { isAuthenticated } from "../services/auth";
 
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
@@ -36,6 +37,26 @@ export default function Routes() {
       <Route path="/comodo/list/:id" exact component={ComodoList} />
       <Route path="/componentes/residencia/:idResidencia/comodo/:idComodo" exact component={Componentes} />
       <Route path="/register" exact component={SignUp} />
+
+
+      <Route exact path="/" component={SignIn} />
+      <Route path="/signup" component={SignUp} />
+      <PrivateRoute path="/app" component={() => <h1>App</h1>} />
+      <Route path="*" component={() => <h1>Page not found</h1>} />
     </Switch>
   );
 }
+
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      isAuthenticated() ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+      )
+    }
+  />
+);

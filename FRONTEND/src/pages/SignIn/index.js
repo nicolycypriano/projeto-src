@@ -1,48 +1,63 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import * as Yup from 'yup';
-import { Formik } from 'formik';
 
-import { signInRequest } from '~/store/modules/auth/actions';
 
-import logo from '../../assets/logo.svg';
-import { Img, ContainerBloco, ContainerForm, H1, Body } from './styles';
-import { Container } from './styles';
-import { Box } from '~/components/Header/styles';
 
-// const schema = Yup.object().shape({
-//   email: Yup.string()
-//     .email('Email inválido!')
-//     .required('E-mail é obrigatório'),
-//   password: Yup.string().required('A senha é obrigatória.')
-// });
+import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
+import { Form, Container } from "../SignUp/styles";
+import Logo from "../../assets/logo-purple.svg";
+import api from "../../services/api";
+import { login } from "../../services/auth";
 
-// export default function SignIn() {
-//   const dispatch = useDispatch();
-//   const loading = useSelector(state => state.auth.loading);
-
-//   function handleSubmit({ email, password }) {
-//     dispatch(signInRequest(email, password));
-//   }
 
 class SignIn extends Component {
+  state = {
+    email: "",
+    password: "",
+    error: ""
+  };
+
+  handleSignIn = async e => {
+    e.preventDefault();
+    const { email, password } = this.state;
+    if (!email || !password) {
+      this.setState({ error: "Preencha e-mail e senha para continuar!" });
+    } else {
+      try {
+        const response = await api.post("/sessions", { email, password });
+        login(response.data.token);
+        this.props.history.push("/app");
+      } catch (err) {
+        this.setState({
+          error:
+            "Houve um problema com o login, verifique suas credenciais. T.T"
+        });
+      }
+    }
+  };
+
   render() {
-  return (
-    <>
-      <Body>
-      </Body>
-
-
+    return (
       <Container>
-        <Img src={logo} alt="SRC" />
-        <H1>Sistema Residencial de Controle e Monitoramento</H1>
-          <Link to='/residencia/list'>
-            <button>Acessar</button>
-          </Link>
+        <Form onSubmit={this.handleSignIn}>
+          <img src={Logo} alt="Airbnb logo" />
+          {this.state.error && <p>{this.state.error}</p>}
+          <input
+            type="email"
+            placeholder="Endereço de e-mail"
+            onChange={e => this.setState({ email: e.target.value })}
+          />
+          <input
+            type="password"
+            placeholder="Senha"
+            onChange={e => this.setState({ password: e.target.value })}
+          />
+          <button type="submit">Entrar</button>
+          <hr />
+          <Link to="/signup">Criar conta grátis</Link>
+        </Form>
       </Container>
-    </>
-  );
+    );
   }
 }
 
-export default SignIn;
+export default withRouter(SignIn);
