@@ -18,7 +18,7 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 60%;
+  height: 400px;
   border-radius: 10px;
   opacity: 1;
   text-align: center;
@@ -36,27 +36,19 @@ export const Form = styled.form`
     text-align: center;
   }
   input {
-    flex: 1;
-    height: 46px;
-    margin-bottom: 15px;
+    height: 40px;
+    margin-bottom: 5px;
     padding: 0 20px;
     color: #777;
     font-size: 15px;
     width: 100%;
     border: 1px solid #ddd;
-    height: 30px;
+    border-radius: 3px;
     &::placeholder {
       color: #999;
     }
   }
   button {
-    /* color: #fff;
-    font-size: 16px;
-    background: #fc6963;
-    height: 56px;
-    border: 0;
-    border-radius: 5px;
-    width: 100%; */
     width: 100%;
     height: 50px;
     background-color: #8459A1;
@@ -76,7 +68,7 @@ export const Form = styled.form`
     }
   }
   hr {
-    margin: 20px 0;
+    margin: 6px 0;
     border: none;
     border-bottom: 1px solid #cdcdcd;
     width: 100%;

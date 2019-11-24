@@ -69,9 +69,8 @@ class SignUp extends Component {
     if (!username || !email || !password) {
       this.setState({ error: "Preencha todos os dados para se cadastrar" });
     } else {
-      console.log(username, email, password)
       try {
-        await api.post("/register", { username, email, password });
+        await api.post("/auth/register", { username, email, password });
         this.props.history.push("/");
       } catch (err) {
         console.log(err);
