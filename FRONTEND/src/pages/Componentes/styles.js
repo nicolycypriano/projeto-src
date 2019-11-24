@@ -149,3 +149,23 @@ export const BackButton = styled.button`
   }
 `;
 
+export const Button2 = styled.button`
+color: #f3f3f3;
+  background-color: #704d89;
+  border: none;
+  height: 50px;
+  line-height: 30px;
+  padding: 0 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 2px;
+  width: 40%;
+  margin-bottom: 10px;
+  margin-left: 7%;
+  :hover {
+    background: ${darken(0.1, "#704d89")};
+    transition: 300ms;
+  }
+  margin-top: 5%;
+`;

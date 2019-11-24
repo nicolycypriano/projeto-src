@@ -5,6 +5,7 @@ import {
   Button,
   Content,
   BackButton,
+  Button2,
   Content2,
   H1Styled2
 } from './styles';
@@ -128,17 +129,16 @@ class Componentes extends Component {
     return (
       <>
 
-        <Link to={`/comodo/list/${this.props.match.params.idResidencia}`}>
-          <BackButton>
-            <img src={Back}></img>
-          </BackButton>
-        </Link>
+
+        
 
 <Content2>
 <br></br>
         <br></br>
         <br></br>
       <Content>
+        <br></br>
+        <br></br>
         <Loading loading={loading} />
         <br></br>
         <br></br>
@@ -176,6 +176,8 @@ class Componentes extends Component {
         
 <Content2>        */}
         <Content>
+        <br></br>
+        <br></br>
         <Loading loading={loading} />
         <br></br>
         <br></br>
@@ -201,7 +203,15 @@ class Componentes extends Component {
           </Link>
         </ul>
       </Content>
-</Content2>    
+</Content2> 
+
+        <Link to={`/comodo/list/${this.props.match.params.idResidencia}`}>
+            <Button2>Voltar</Button2>
+        </Link>
+        <Link to={`/`}>
+            <Button2 onClick={this.logout}>Sair</Button2>
+        </Link>
+
       </>
     );
   }
