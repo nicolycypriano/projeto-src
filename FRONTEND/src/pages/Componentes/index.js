@@ -133,6 +133,8 @@ class Componentes extends Component {
             <img src={Back}></img>
           </BackButton>
         </Link>
+
+<Content2>
       <Content>
         <Loading loading={loading} />
         <br></br>
@@ -166,7 +168,9 @@ class Componentes extends Component {
           </Link>
         </ul>
         </Content>
+{/* </Content2>
         
+<Content2>        */}
         <Content>
         <Loading loading={loading} />
         <br></br>
@@ -191,9 +195,8 @@ class Componentes extends Component {
             <Button>Cadastrar novo atuador</Button>
           </Link>
         </ul>
-
       </Content>
-      
+</Content2>    
       </>
     );
   }
