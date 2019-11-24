@@ -82,6 +82,9 @@ class ComodoList extends Component {
     return (
       <>
       <Content>
+      <br></br>
+        <br></br>
+        <br></br>
         <Div>
           <Loading loading={loading} />
         </Div>

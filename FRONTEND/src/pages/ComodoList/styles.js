@@ -4,7 +4,7 @@ import { darken } from "polished";
 
 export const Content = styled.div`
   width: 100%;
-  /* max-width: 1300px; */
+  max-width: 1300px;
   flex-direction: column;
   display: flex;
   align-items: center;
@@ -13,7 +13,7 @@ export const Content = styled.div`
 
   ul {
     width: 100%;
-    /* max-width: 400px; */
+    max-width: 400px;
 
     li {
       background: #fff;

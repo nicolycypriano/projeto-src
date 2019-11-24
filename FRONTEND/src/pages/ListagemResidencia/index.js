@@ -60,6 +60,10 @@ class ListagemResidencia extends Component {
     return (
       <>
       <Content>
+        <br></br>
+        <br></br>
+        <br></br>
+
       <Loading loading={loading} />
       <br></br>
       <br></br>
