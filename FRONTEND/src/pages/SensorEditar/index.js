@@ -98,7 +98,7 @@ class Sensor extends Component {
         </H1Styled>
         <Formik
           initialValues={{
-            nome: this.state.sensorAtual[0].nome,
+            nome: "",
             tipoSensor: "1",
           }}
           enableReinitialize={true}
