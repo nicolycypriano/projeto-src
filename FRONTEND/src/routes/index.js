@@ -25,18 +25,18 @@ export default function Routes() {
     <Switch>
       <Route path="/" exact component={SignIn} />
       <Route path="/signup" component={SignUp} />
-      <PrivateRoute path="/comodo/edit/:id" exact component={() => <ComodoEditar/>} />
-      <PrivateRoute path="/residencia/:idResidencia/comodo/:idComodo/atuador" exact component={() => <Atuador/>} />
-      <PrivateRoute path="/residencia/:idResidencia/comodo/:idComodo/sensor" exact component={() => <Sensor/>} />
-      <PrivateRoute path="/profile" exact component={() => <Profile/>} />
-      <PrivateRoute path="/residencia/:id/comodo" exact component={() => <Comodo/>} />
-      <PrivateRoute path="/residencia/list" exact component={() => <ListagemResidencia/>} />
-      <PrivateRoute path="/residencia/edit/:id" exact component={() => <ResidenciaEditar/>} />     
-      <PrivateRoute path="/residencia" exact component={() => <Residencia/>} />
-      <PrivateRoute path="/componentes/residencia/:idResidencia/comodo/:idComodo/sensor/edit/:id" exact component={() => <SensorEditar/>} />
-      <PrivateRoute path="/componentes/residencia/:idResidencia/comodo/:idComodo/atuador/edit/:id" exact component={() => <AtuadorEditar/>} />
-      <PrivateRoute path="/comodo/list/:id" exact component={() => <ComodoList/>} />
-      <PrivateRoute path="/componentes/residencia/:idResidencia/comodo/:idComodo" exact component={() => <Componentes/>} />
+      <Route path="/comodo/edit/:id" exact component={ComodoEditar} />
+      <Route path="/residencia/:idResidencia/comodo/:idComodo/atuador" exact component={Atuador} />
+      <Route path="/residencia/:idResidencia/comodo/:idComodo/sensor" exact component={Sensor} />
+      <Route path="/profile" exact component={Profile} />
+      <Route path="/residencia/:id/comodo" exact component={Comodo} />
+      <Route path="/residencia/list" exact component={ListagemResidencia} />
+      <Route path="/residencia/edit/:id" exact component={ResidenciaEditar} />     
+      <Route path="/residencia" exact component={Residencia} />
+      <Route path="/componentes/residencia/:idResidencia/comodo/:idComodo/sensor/edit/:id" exact component={SensorEditar} />
+      <Route path="/componentes/residencia/:idResidencia/comodo/:idComodo/atuador/edit/:id" exact component={AtuadorEditar} />
+      <Route path="/comodo/list/:id" exact component={ComodoList} />
+      <Route path="/componentes/residencia/:idResidencia/comodo/:idComodo" exact component={Componentes} />
       <Route path="*" component={() => <h1>Page not found</h1>} />
     </Switch>
   );
