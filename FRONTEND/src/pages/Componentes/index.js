@@ -135,8 +135,12 @@ class Componentes extends Component {
         </Link>
 
 <Content2>
+<br></br>
+        <br></br>
+        <br></br>
       <Content>
         <Loading loading={loading} />
+        <br></br>
         <br></br>
 
         <H1Styled> {this.state.comodo ? "Sensores do cômodo " + this.state.comodo[0].nome: ""}</H1Styled>
@@ -173,6 +177,7 @@ class Componentes extends Component {
 <Content2>        */}
         <Content>
         <Loading loading={loading} />
+        <br></br>
         <br></br>
         <H1Styled> {this.state.comodo ? " Atuadores do cômodo " + this.state.comodo[0].nome: ""}</H1Styled>
         <ul>
