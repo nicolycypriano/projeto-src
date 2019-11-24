@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import Loading from '../../components/Loading/loading'
+import { logout } from "../../services/auth";
 
 import api from '../../services/api';
 import { ToastContainer, toast } from 'react-toastify';
@@ -74,6 +75,10 @@ class ComodoList extends Component {
     });   
   }
 
+  logout = () => {
+    logout()
+  }
+
   render() {
 
     const { loading } = this.state
@@ -113,11 +118,16 @@ class ComodoList extends Component {
           <Link to={`/residencia/${this.props.match.params.id}/comodo`}>
             <Button>Cadastrar novo cômodo</Button>
           </Link>
+          <Link to="/residencia/list">
+            <BackButton>Voltar</BackButton>
+          </Link>
+          
+        <Link to="/">
+            <Button onClick={this.logout}>Sair</Button>
+        </Link>
+       
         </ul>
       
-       <Link to="/residencia/list">
-        <BackButton>Voltar</BackButton>
-        </Link>
       </Content>
 
       </>
