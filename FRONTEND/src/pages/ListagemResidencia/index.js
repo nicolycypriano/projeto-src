@@ -68,11 +68,11 @@ class ListagemResidencia extends Component {
         <ul>
           {this.state.residencias.map((residencia) =>
             <li key={residencia.id}>
-              <Link to={`/comodo/list/${residencia.id}`}>
+              {/* <Link to={`/comodo/list/${residencia.id}`}> */}
                 <p>Nome: </p><h2>{residencia.nome}</h2><br></br>
                 <p>Logradouro:</p><h2>{residencia.logradouro}</h2><br></br>
                 <p>Número:</p><h2>{residencia.numero}</h2><br></br>
-              </Link>
+              {/* </Link> */}
               <Link to={`/comodo/list/${residencia.id}`}>
                 <button>Visualizar cômodos</button>
               </Link>
