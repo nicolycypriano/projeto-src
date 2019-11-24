@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import Header from '../../components/Header'
 import { ToastContainer, toast } from 'react-toastify';
 import Loading from '../../components/Loading/loading'
+import { logout } from "../../services/auth";
 
 class ListagemResidencia extends Component {
 
@@ -49,6 +50,10 @@ class ListagemResidencia extends Component {
     });   
   }
 
+  logout = () => {
+    logout()
+  }
+
   render() {
     const { loading } = this.state
 
@@ -84,7 +89,7 @@ class ListagemResidencia extends Component {
             <Button>Cadastrar nova residência</Button>
           </Link>
           <Link to="/">
-            <Button>Sair</Button>
+            <Button onClick={this.logout}>Sair</Button>
           </Link>
         </ul>
       </Content>
