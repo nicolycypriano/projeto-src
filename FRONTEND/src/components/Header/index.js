@@ -28,7 +28,7 @@ render(){
         <img src={logo}></img>
       </Link>
     {/* </Box> */}
-
+<h1>Bem vindo ao controle de suas residências</h1>
     {/* <Box> */}
     <Link to='/'>
       <button onClick={this.logout}><img src={logoutt}></img></button>

@@ -16,6 +16,19 @@ export const Box = styled.div`
       background-color: #f6f6f6;
       border: none
     }
+
+    h1{
+      text-align: center;
+      color: #c9c9c9;
+      margin-top: 18px;
+      font-family: Roboto;
+      font-size: 20px;
+
+      :hover {
+        color: #b9b9b9;
+
+      }
+    }
 `;
 
 // export const Content = styled.div`
