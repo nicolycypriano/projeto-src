@@ -100,9 +100,9 @@ class ComodoList extends Component {
         <ul>
           {this.state.comodos.map((comodo) =>
             <li key={comodo.id}>
-              <Link to={`/componentes/residencia/${this.props.match.params.id}/comodo/${comodo.id}`}>
+              {/* <Link to={`/componentes/residencia/${this.props.match.params.id}/comodo/${comodo.id}`}> */}
                 <h2>{comodo.nome}</h2>
-              </Link>
+              {/* </Link> */}
               <Link to={`/componentes/residencia/${this.props.match.params.id}/comodo/${comodo.id}`}>
                 <button>Visualizar atuadores e sensores</button>
               </Link>

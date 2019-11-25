@@ -9,6 +9,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
+  margin-top: 12%;
 `;
 
 export const H1Styled = styled.div`

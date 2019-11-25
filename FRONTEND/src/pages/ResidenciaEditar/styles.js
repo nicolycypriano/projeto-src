@@ -3,12 +3,13 @@ import { darken } from "polished";
 
 export const Container = styled.div`
   width: 100%;
-  max-width: 1200px;
+  height: 100%;
   margin: 0 auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   display: flex;
+  margin-top: 12%;
 `;
 
 export const H1Styled = styled.div`

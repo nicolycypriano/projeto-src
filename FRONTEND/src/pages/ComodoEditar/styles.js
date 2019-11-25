@@ -9,6 +9,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
+  margin-top: 15%;
 `;
 
 export const H1Styled = styled.div`
@@ -80,7 +81,8 @@ export const BackButton = styled.button`
   font-weight: bold;
   cursor: pointer;
   border-radius: 2px;
-  margin-top: 10px;
+  /* margin-top: 5px; */
+  width: 399px;
 `;
 
 export const Select = styled.select`
