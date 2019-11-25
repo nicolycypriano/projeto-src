@@ -7,6 +7,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Link } from 'react-router-dom';
+import Header from '../../components/Header/index'
+
 
 class Main extends Component {
   // Residencia
@@ -66,6 +68,9 @@ class Main extends Component {
     }
 
     return (
+      <>
+      <Header/>
+
       <Container>
         <H1Styled>
           <h1>Adicionar nova residência</h1>
@@ -149,6 +154,7 @@ class Main extends Component {
           pauseOnHover
         />
       </Container>
+      </>
     );
   }
 }

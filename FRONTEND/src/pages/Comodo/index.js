@@ -6,6 +6,8 @@ import api from '../../services/api';
 import { ToastContainer, toast } from 'react-toastify';
 import { Formik } from "formik";
 import 'react-toastify/dist/ReactToastify.css';
+import Header from '../../components/Header/index'
+
 
 
 class Comodo extends Component {
@@ -65,6 +67,9 @@ class Comodo extends Component {
 
   render() {
     return (
+      <>
+      <Header/>
+
       <Container>
         <H1Styled>
           <h1>Criar comodo</h1>
@@ -116,6 +121,7 @@ class Comodo extends Component {
           pauseOnHover
         />
       </Container>
+      </>
     );  
   }  
 }  

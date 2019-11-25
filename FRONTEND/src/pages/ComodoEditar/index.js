@@ -6,6 +6,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Formik } from "formik";
 import { Link } from 'react-router-dom';
+import Header from '../../components/Header/index'
+
 
 class ComodoEditar extends Component {
   // Residencia
@@ -63,6 +65,9 @@ class ComodoEditar extends Component {
 
   render() {
     return (
+      <>
+      <Header/>
+
       <Container>
         <H1Styled>
           <h1>Editar comodo</h1>
@@ -116,6 +121,7 @@ class ComodoEditar extends Component {
           pauseOnHover
         />
       </Container>
+      </>
     );
   }
 }

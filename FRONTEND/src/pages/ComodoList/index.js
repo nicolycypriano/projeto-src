@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import Loading from '../../components/Loading/loading'
 import { logout } from "../../services/auth";
+import Header from '../../components/Header/index'
 
 import api from '../../services/api';
 import { ToastContainer, toast } from 'react-toastify';
@@ -86,6 +87,8 @@ class ComodoList extends Component {
 
     return (
       <>
+            <Header></Header>
+
       <Content>
       <br></br>
         <br></br>

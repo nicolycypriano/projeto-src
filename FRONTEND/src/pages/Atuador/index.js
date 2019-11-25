@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom';
 import api from '../../services/api'
 import { Formik } from "formik";
 import { toast } from 'react-toastify';
+import Header from '../../components/Header/index'
 
 class Atuador extends Component {
 
@@ -62,6 +63,9 @@ class Atuador extends Component {
 
   render() {
     return (
+      <>
+      <Header></Header>
+
       <Container>
         <H1Styled>
           <h1>Adicionar novo atuador {this.state.comodoTipo ? " - cômodo  " + this.state.comodoTipo[0].nome : ""}</h1>
@@ -115,6 +119,7 @@ class Atuador extends Component {
 
                   
       </Container>
+      </>
     );
   }
 }

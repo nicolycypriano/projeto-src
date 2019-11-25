@@ -15,6 +15,8 @@ import api from '../../services/api'
 import { Formik } from "formik";
 import { toast } from 'react-toastify';
 import Loading from '../../components/Loading/loading'
+import Header from '../../components/Header/index'
+
 
 
 class Sensor extends Component {
@@ -88,6 +90,9 @@ class Sensor extends Component {
     const { loading } = this.state
 
     return (
+      <>
+      <Header/>
+
       <Container>
         <Loading loading={loading} />
       <br></br>
@@ -145,6 +150,7 @@ class Sensor extends Component {
             )}
         </Formik>
       </Container>
+      </>
     );
   }
 }

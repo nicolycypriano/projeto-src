@@ -6,6 +6,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Formik } from "formik";
 import { Link } from 'react-router-dom';
+import Header from '../../components/Header/index'
+
 
 class ResidenciaEditar extends Component {
   // Residencia
@@ -70,6 +72,9 @@ class ResidenciaEditar extends Component {
 
   render() {
     return (
+      <>
+      <Header/>
+
       <Container>
         <H1Styled>
           <h1>Editar residência</h1>
@@ -145,6 +150,7 @@ class ResidenciaEditar extends Component {
           pauseOnHover
         />
       </Container>
+      </>
     );
   }
 }

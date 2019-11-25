@@ -14,6 +14,8 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Loading from '../../components/Loading/loading'
 import Back from '../../assets/back.svg'
+import Header from '../../components/Header/index'
+
 
 
 class Componentes extends Component {
@@ -128,6 +130,7 @@ class Componentes extends Component {
 
     return (
       <>
+      <Header/>
 
 
         

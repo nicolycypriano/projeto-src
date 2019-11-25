@@ -14,6 +14,8 @@ import { Link } from 'react-router-dom';
 import api from '../../services/api'
 import { Formik } from "formik";
 import { toast } from 'react-toastify';
+import Header from '../../components/Header/index'
+
 
 class Sensor extends Component {
 
@@ -64,6 +66,9 @@ class Sensor extends Component {
 
   render() {
     return (
+      <>
+      <Header/>
+
       <Container>
         <H1Styled>
           <h1>Adicionar novo sensor {this.state.comodoTipo ? " - cômodo  " + this.state.comodoTipo[0].nome : ""}</h1>
@@ -115,6 +120,7 @@ class Sensor extends Component {
                     <BackButton>Voltar</BackButton>
                   </Link>
       </Container>
+      </>
     );
   }
 }

@@ -2,15 +2,19 @@ import styled from 'styled-components';
 
 export const Box = styled.div`
     background-color: #f6f6f6;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    margin: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 
     img {
       margin: 10px;
-      width: 30px;
-      height: 30px;
+      width: 35px;
+      height: 35px;
+    }
+
+    button {
+      background-color: #f6f6f6;
+      border: none
     }
 `;
 
