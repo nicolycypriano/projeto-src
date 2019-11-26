@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+
+
 export const Box = styled.div`
     background-color: #f6f6f6;
     width: 100%;
@@ -21,11 +23,11 @@ export const Box = styled.div`
       text-align: center;
       color: #c9c9c9;
       margin-top: 18px;
-      font-family: Roboto;
+      font-family: 'Quicksand';
       font-size: 20px;
 
       :hover {
-        color: #b9b9b9;
+        color: #b6b6b6;
 
       }
     }
