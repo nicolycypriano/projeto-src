@@ -160,12 +160,18 @@ color: #f3f3f3;
   font-weight: bold;
   cursor: pointer;
   border-radius: 2px;
-  width: 40%;
-  margin-bottom: 10px;
-  margin-left: 7%;
+  margin: 10px;
+  width: 100px;;
+
   :hover {
     background: ${darken(0.1, "#704d89")};
     transition: 300ms;
   }
-  margin-top: 5%;
+`;
+
+export const Div = styled.div`
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
 `;

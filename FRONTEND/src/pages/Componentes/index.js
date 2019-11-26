@@ -7,7 +7,8 @@ import {
   BackButton,
   Button2,
   Content2,
-  H1Styled2
+  H1Styled2,
+  Div
 } from './styles';
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
@@ -207,14 +208,15 @@ class Componentes extends Component {
         </ul>
       </Content>
 </Content2> 
-
-        <Link to={`/comodo/list/${this.props.match.params.idResidencia}`}>
-            <Button2>Voltar</Button2>
-        </Link>
-        <Link to={`/`}>
-            <Button2 onClick={this.logout}>Sair</Button2>
-        </Link>
-
+        
+        <Div>
+          <Link to={`/comodo/list/${this.props.match.params.idResidencia}`}>
+              <Button2>Voltar</Button2>
+          </Link>
+          <Link to={`/`}>
+              <Button2 onClick={this.logout}>Sair</Button2>
+          </Link>
+        </Div>
       </>
     );
   }

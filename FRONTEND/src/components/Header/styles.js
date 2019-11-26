@@ -25,6 +25,7 @@ export const Box = styled.div`
       margin-top: 18px;
       font-family: 'Quicksand';
       font-size: 20px;
+      font-size: 15px;
 
       :hover {
         color: #b6b6b6;
