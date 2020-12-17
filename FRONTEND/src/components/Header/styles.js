@@ -1,66 +1,95 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  background: #fff;
-  padding: 0 30px;
-`;
 
-export const Content = styled.div`
-  height: 64px;
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 
-  nav {
+export const Box = styled.div`
+    background-color: #f6f6f6;
+    width: 100%;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
 
     img {
-      margin-right: 20px;
-      padding-right: 20px;
-      border-right: 1px solid #eee;
+      margin: 10px;
+      width: 35px;
+      height: 35px;
     }
 
-    a {
-      font-weight: bold;
-      color: #7159c1;
+    button {
+      background-color: #f6f6f6;
+      border: none
     }
-  }
 
-  aside {
-    display: flex;
-    align-items: center;
-  }
+    h1{
+      text-align: center;
+      color: #c9c9c9;
+      margin-top: 18px;
+      font-family: 'Quicksand';
+      font-size: 20px;
+      font-size: 15px;
+
+      :hover {
+        color: #b6b6b6;
+
+      }
+    }
 `;
 
-export const Profile = styled.div`
-  display: flex;
-  margin-left: 20px;
-  padding-left: 20px;
-  border-left: 1px solid #eee;
+// export const Content = styled.div`
+//   height: 64px;
+//   max-width: 900px;
+//   margin: 0 auto;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
 
-  div {
-    text-align: right;
-    margin-right: 10px;
+//   nav {
+//     display: flex;
+//     align-items: center;
 
-    strong {
-      display: block;
-      color: #333;
-    }
+//     img {
+//       margin-right: 20px;
+//       padding-right: 20px;
+//       border-right: 1px solid #eee;
+//     }
 
-    a {
-      display: block;
-      margin-top: 2px;
-      font-size: 12px;
-      color: #999;
-    }
-  }
+//     a {
+//       font-weight: bold;
+//       color: #7159c1;
+//     }
+//   }
 
-  img {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-  }
-`;
+//   aside {
+//     display: flex;
+//     align-items: center;
+//   }
+// `;
+
+// export const Profile = styled.div`
+//   display: flex;
+//   margin-left: 20px;
+//   padding-left: 20px;
+//   border-left: 1px solid #eee;
+
+//   div {
+//     text-align: right;
+//     margin-right: 10px;
+
+//     strong {
+//       display: block;
+//       color: #333;
+//     }
+
+//     a {
+//       display: block;
+//       margin-top: 2px;
+//       font-size: 12px;
+//       color: #999;
+//     }
+//   }
+
+//   img {
+//     width: 32px;
+//     height: 32px;
+//     border-radius: 50%;
+//   }
+// `;

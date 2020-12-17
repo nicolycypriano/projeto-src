@@ -3,62 +3,101 @@ import {
   H1Styled,
   Select,
   Button,
-  Container,
-  ContainerContainer,
-  ContainerLi,
+  Content,
 } from './styles';
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
-
-import Header from '../../components/Header';
+import Header from '../../components/Header'
+import { ToastContainer, toast } from 'react-toastify';
+import Loading from '../../components/Loading/loading'
+import { logout } from "../../services/auth";
 
 class ListagemResidencia extends Component {
 
   state = {
-    residencias: []
+    residencias: [],
+    loading: false
   }
 
   componentDidMount() {
+    this.setState({ loading: true })
+
     api.get('/componentes/residencia')
       .then(response => {
         this.setState({ residencias: response.data.residencias });
+        this.setState({ loading: false })
       })
       .catch(function (error) {
         console.log(error);
       });
   }
+  
+  handleRemove = (id) => {
+    api.post(`/residencia/remove/${id}`)
+    .then(response => {
+        if (response.data.residencia != null) {
+          toast.success("Residência removida com sucesso!")
+          let residencias = this.state.residencias.filter((residencia) => residencia.id != id);
+          this.setState({ residencias: residencias});        
+        }       
+        else {  
+          toast.error("Desculpe, mas existem cõmodos associados a esta residencia.")
+        }
+      })
+      .catch(function (error) {
+      
+      console.log(error);
+    });   
+  }
+
+  logout = () => {
+    logout()
+  }
 
   render() {
+    const { loading } = this.state
+
     return (
       <>
-        <Container>
-          <H1Styled>Residências</H1Styled>
-          <ul>
-            {this.state.residencias.map((elemento) =>
-                <Link to={`/comodo/list/${elemento.id}`}>
-                  <ContainerLi>
-                    <li key={elemento.id}>
-                      <b>Código da residência:</b> {elemento.id} <br/> 
-                      <b>Nome da residência:</b> {elemento.nome} <br/> 
-                      <b>Nome da rua:</b> {elemento.logradouro} <br/> 
-                      <b>Numero da rua</b> {elemento.numero} <br/>
-                    </li>
-                  </ContainerLi>
-                </Link>
-            )
-              ||
-              <li>Nenhuma residência cadastrada!</li>}
-          </ul>
-        </Container>
+      <Header></Header>
+      <Content>
+        <br></br>
+        <br></br>
+        <br></br>
 
-        <Link to="/residencia">
-          <Button>Cadastrar nova residência</Button>
-        </Link>
+      <Loading loading={loading} />
+      <br></br>
+      <br></br>
+      <br></br>
+        <H1Styled>Suas residências</H1Styled>
+        <ul>
+          {this.state.residencias.map((residencia) =>
+            <li key={residencia.id}>
+              {/* <Link to={`/comodo/list/${residencia.id}`}> */}
+                <p>Nome: </p><h2>{residencia.nome}</h2><br></br>
+                <p>Logradouro:</p><h2>{residencia.logradouro}</h2><br></br>
+                <p>Número:</p><h2>{residencia.numero}</h2><br></br>
+              {/* </Link> */}
+              <Link to={`/comodo/list/${residencia.id}`}>
+                <button>Visualizar cômodos</button>
+              </Link>
+              <Link to={`/residencia/edit/${residencia.id}`}>
+                <button>Editar</button>
+              </Link>
+              <button onClick={() => this.handleRemove(residencia.id)}>Remover</button>
+            </li>
+          )
+            ||
+            <li>Nenhuma residência cadastrada!</li>}
 
-
-        <Link to="/">
-          <Button>Sair</Button>
-        </Link>
+          <Link to="/residencia">
+            <Button>Cadastrar nova residência</Button>
+          </Link>
+          <Link to="/">
+            <Button onClick={this.logout}>Sair</Button>
+          </Link>
+        </ul>
+      </Content>
       </>
     );
   }

@@ -1,42 +1,42 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { logout } from "../../services/auth";
+
 
 import Notifications from '~/components/Notifications';
 
-import logo from '~/assets/logo-purple.svg';
+import logo from '../../assets/logo-purple.svg';
+import logoutt from '../../assets/logout.svg';
 
-import { Container, Content, Profile } from './styles';
 
-export default function Header() {
-  const profile = useSelector(state => state.user.profile);
 
+import { Box } from './styles';
+
+class Header extends Component {
+  
+    logout = () => {
+      logout()
+    }
+
+
+render(){
   return (
-    <Container>
-      <Content>
-        <nav>
-          <img src={logo} alt="GoBarber" />
-          <Link to="/dashboard">DASHBOARD</Link>
-        </nav>
-
-        <aside>
-          <Notifications />
-
-          <Profile>
-            <div>
-              <strong>{profile.name}</strong>
-              <Link to="/profile">Meu perfil</Link>
-            </div>
-            <img
-              src={
-                // profile.avatar.url ||
-                'https://api.adorable.io/avatars/50/abott@adorable.png'
-              }
-              alt="Diego Fernandes"
-            />
-          </Profile>
-        </aside>
-      </Content>
-    </Container>
+    <>
+    <Box>
+      <Link to='/residencia/list'>
+        <img src={logo}></img>
+      </Link>
+    {/* </Box> */}
+<h1>Bem vindo ao Sistema de Controle e Monitoramento Residencial</h1>
+    {/* <Box> */}
+    <Link to='/'>
+      <button onClick={this.logout}><img src={logoutt}></img></button>
+    </Link>
+  </Box>
+  </>
   );
 }
+}
+
+export default Header;

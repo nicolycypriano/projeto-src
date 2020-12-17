@@ -1,11 +1,57 @@
 import styled from 'styled-components';
 
+export const Content = styled.div`
+  width: 100%;
+  max-width: 1300px;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  
+
+  ul {
+    width: 100%;
+    max-width: 400px;
+
+    li {
+      background: #fff;
+      padding: 10px;
+      width: 100%;
+      margin: 0 0 10px 0;
+      display: flex;
+      flex-direction: column;
+
+      a {
+        color: #222;
+        font-size: 16px;
+      }
+
+      button {
+        border-radius: 2px;
+        background: #222;
+        color: #fff;
+        padding: 10px;
+        margin: 10px 0 0 0;
+        border: none;
+        background: #C99AD0;
+        width: 100%;
+
+        :hover{
+          background-image: linear-gradient(#C99AE9, #C99AD0) ;
+          transition: .10s;
+          color: #fff;
+        }
+      }
+    }
+  }
+`;
+
 export const H1Styled = styled.h1`
   color: #fff;
   font-size: 50px;
   text-align: center;
-  display: table;
-  margin-right: 10px;
+  margin: 10px 0 10px 0;
 `;
 
 export const Button = styled.button`
@@ -18,8 +64,14 @@ export const Button = styled.button`
   text-transform: uppercase;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 30px;
-  border-radius: 10px;
+  border-radius: 2px;
+  width: 100%;
+  margin-bottom: 10px;
+
+  :hover{
+          opacity: 0.8;
+          color: #fff;
+        }
 `;
 
 
@@ -45,6 +97,8 @@ export const Select = styled.select`
 export const Container = styled.div`
   width: 100%;
   height: 100%;
+  margin: 0;
+  padding: 0;
 
   li {
     margin-bottom: 10px;
@@ -56,20 +110,4 @@ export const Container = styled.div`
 
 export const ContainerContainer = styled.div`
   display: flex;
-`;
-
-
-export const ContainerLi = styled.div`
-  border: 3px solid #f0f0f0;
-  border-radius: 10px;
-  padding: 10px;
-  background-color: #fff;
-  color: #7D5A9B;
-  width: 120%;
-  margin-left: -50px;
-  margin-bottom: 10px;
-
-  :hover{
-    opacity: 0.8;
-  }
 `;

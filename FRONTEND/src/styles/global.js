@@ -18,7 +18,8 @@ export default createGlobalStyle`
   }
 
   html, body, #root {
-    height: 100%;
+    min-height: 100%;
+    background-color: #8459A1;
   }
 
   body {
@@ -40,4 +41,6 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }  
+
+
 `;
